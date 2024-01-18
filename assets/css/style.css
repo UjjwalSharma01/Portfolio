@@ -651,6 +651,7 @@ header .navbar ul li a:hover {
 .work {
   /* background: #010124; */
   background: linear-gradient(to bottom, #000031, #00002c);
+  min-height: 68vh;
 }
 .work h2 {
   color: #fff;
@@ -986,7 +987,7 @@ header .navbar ul li a:hover {
   text-align: center;
   background: linear-gradient(
     to top,
-    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.8) 20%,
     rgba(0, 0, 0, 0) 100%
   );
   transition: 0.5s;
@@ -1026,12 +1027,16 @@ header .navbar ul li a:hover {
   color: #fff;
 }
 #certifications .box .content .desc {
-  color: #fff; /* Change this to a contrasting color */
-  font-size: 1.3rem; /* Increase the font size */
+  color: #FFD700; /* Change this to a contrasting color */
+  font-size: 1.5rem; /* Increase the font size */
+  font-weight: bolder;
 }
 #certifications .box .content h3 {
   font-size: 2rem; /* Increase the font size */
-  color: #fff;
+  /* color: #00008b; */
+  /* color: #36454F; */
+  color: #3E2723; 
+  /* color: #008080; */
   margin-bottom: 10px;
 }
 @media (max-width: 600px) {
