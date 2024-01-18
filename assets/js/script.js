@@ -69,6 +69,8 @@ async function fetchData(type = "skills") {
         response = await fetch("./skills.json")
     }else if(type === "projects"){
         response = await fetch("./projects/projects.json")
+    }else if(type === "certifications"){
+        response = await fetch("./Certifications/certifications.json")
     }
     const data = await response.json();
     return data;
@@ -199,8 +201,8 @@ fetchData("projects").then(data => {
     showProjects(data);
 });
 
-fetchData("notes").then(data => {
-    showNotes(data);
+fetchData("certifications").then(data => {
+  showCertifications(data);
 });
 
 // <!-- tilt js effect starts -->
