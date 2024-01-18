@@ -1,0 +1,27 @@
+[
+    {
+        "name": "Cybersecurity - Web Hacking",
+        "desc": "By Indian Institute of Technology, Kanpur",
+        "image": "cybersecurity",
+        "link": "https://drive.google.com/file/d/18OgNOIeCJhuYSzlW66OpxmbBLntdinT3/view?usp=drive_link"
+    },
+    {
+        "name": "Blockchain development (Rank Holder)",
+        "desc": "By IBC MEDIA in collaboration with polkadot",
+        "image": "blockchain",
+        "link": "https://drive.google.com/file/d/13Df3LzzqAldKR2iXFYIFK1SExPCAOuUK/view?usp=drive_link"
+    },
+    {
+        "name": "Image Synthesis Models",
+        "desc": "By Machine Hack",
+        "image": "imagesynthesis",
+        "link": "https://drive.google.com/file/d/17cYAvNrSZ2putPqcpHs4yMlCOFrDK2nO/view?usp=drive_link"
+    },
+    {
+        "name": "Digital Marketing",
+        "desc": "By Indian Institute of Technology, Kanpur",
+        "image": "digitalmarketing",
+        "link": "https://drive.google.com/file/d/17cYAvNrSZ2putPqcpHs4yMlCOFrDK2nO/view?usp=drive_link"
+    }
+
+]
