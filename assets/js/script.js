@@ -66,7 +66,7 @@ var typed = new Typed(".typing-text", {
 async function fetchData(type = "skills") {
     let response
     if(type==="skills"){
-        response = await fetch("skills.json")
+        response = await fetch("./skills.json")
     }else if(type === "projects"){
         response = await fetch("./projects/projects.json")
     }
@@ -92,9 +92,13 @@ function showSkills(skills) {
 
 
 // show projects in projects section
+// fetch('./Certifications/certifications.json')
+//       .then(response => response.json())
+//       .then(certifications => showCertifications(certifications))
+//       .catch(error => console.error('Error:', error));
 
 function showProjects(projects) {
-    let projectsContainer = document.querySelector("#work .box-container");
+    let projectsContainer = document.querySelector("#projects .box-container");
     let projectHTML = "";
     projects.slice(0, 10).filter(project => project.category != "android").forEach(project => {
         projectHTML += `
