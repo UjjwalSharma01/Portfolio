@@ -139,7 +139,7 @@ function showCertifications(certifications) {
     certifications.forEach(certification => {
         certificationHTML += `
         <div class="box">
-            <img draggable="false" src="certifications/images/${certification.image}.png" alt="certification" />
+            <img draggable="false" src="Certifications/images/${certification.image}.png" alt="certification" />
             <div class="content">
                 <div class="tag">
                     <h3>${certification.name}</h3>
