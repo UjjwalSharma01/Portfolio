@@ -91,11 +91,6 @@ function showSkills(skills) {
 }
 
 
-// show projects in projects section
-// fetch('./Certifications/certifications.json')
-//       .then(response => response.json())
-//       .then(certifications => showCertifications(certifications))
-//       .catch(error => console.error('Error:', error));
 
 function showProjects(projects) {
     let projectsContainer = document.querySelector("#projects .box-container");
@@ -125,11 +120,16 @@ function showProjects(projects) {
     // function to show certificates in education section
 
     // acessing data from json function starts
-    fetch('./Certifications/certifications.json')
-      .then(response => response.json())
+    // Corrected path to certifications.json
+    fetch('Certifications/certifications.json')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('HTTP error ' + response.status);
+        }
+        return response.json();
+      })
       .then(certifications => showCertifications(certifications))
       .catch(error => console.error('Error:', error));
-    // acessing data from json function ends
 
 function showCertifications(certifications) {
     let certificationsContainer = document.querySelector("#certifications .box-container");
