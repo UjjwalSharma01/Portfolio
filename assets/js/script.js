@@ -169,7 +169,7 @@ function showCertifications(certifications) {
       const srtop = ScrollReveal({
         origin: 'top',
         distance: '80px',
-        duration: 1000,
+        duration: 100,
         reset: true
       });
       // Add ScrollReveal animations as needed
@@ -191,7 +191,7 @@ function showCertifications(certifications) {
 
     /* SCROLL PROJECTS */
     srtop.reveal('.work .box', { interval: 200 });
-}
+  }
 
 fetchData().then(data => {
     showSkills(data);
@@ -270,12 +270,13 @@ srtop.reveal('.work .box', { interval: 200 });
 
 /* SCROLL EXPERIENCE */
 srtop.reveal('.experience .timeline', { delay: 400 });
-srtop.reveal('.experience .timeline .container', { interval: 400 });
+srtop.reveal('.experience .timeline .container', { interval: 100 });
 
 /* SCROLL CONTACT */
 srtop.reveal('.contact .container', { delay: 400 });
 srtop.reveal('.contact .container .form-group', { delay: 400 });
 /* SCROLL CERTIFICATIONS */
+srtop.reveal('.certi', {interval: 150});
 
 
 
