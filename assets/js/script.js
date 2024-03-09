@@ -1,3 +1,25 @@
+// mouse followe code starts here
+$(window).mousemove(function (e) {
+  $(".ring").css(
+    "transform",
+    `translateX(calc(${e.clientX}px - 1.25rem)) translateY(calc(${e.clientY}px - 1.25rem))`
+  );
+});
+
+$('[data-animate="true"]').each(function (i) {
+  console.log("$(this)", $(this));
+  var element = $(this)[0];
+  observer.add(element, (isIntersecting) => {
+    if (isIntersecting) {
+      $(this).addClass("animate-slide-down");
+    } else {
+      $(this).removeClass("animate-slide-down");
+    }
+  });
+});
+// mouse followe code ends here
+
+
 $(document).ready(function () {
 
     $('#menu').click(function () {
