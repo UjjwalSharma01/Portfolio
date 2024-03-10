@@ -381,4 +381,18 @@ function closeAlert() {
     document.getElementById('alert').style.display = 'none';
   }
 
- 
+
+
+  // preloader function starts here
+window.addEventListener('DOMContentLoaded', function() {
+  var preloader = document.querySelector('.preloader-wrapper');
+  document.body.classList.add('loading');
+  setTimeout(function() {
+    document.body.classList.remove('loading');
+    // Wait for the transition to finish before hiding the preloader
+    preloader.addEventListener('transitionend', function() {
+      preloader.style.display = 'none';
+    });
+  }, 3000); // 3000 milliseconds = 3 seconds
+});
+// preloader function ends here
