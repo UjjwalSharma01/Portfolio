@@ -41,6 +41,7 @@ html::-webkit-scrollbar-thumb {
   background: #420177;
 }
 
+/* mouse follwer cursor / pointer courser starts */
 
 .cursor {
   position: fixed;
@@ -55,10 +56,12 @@ html::-webkit-scrollbar-thumb {
     display: grid;
     place-items: center;
     div {
-      border: 1px solid #fff;
+      /* border: 1px solid #fff; */
+      border: 1px solid black;
       border-radius: 50%;
       animation: pulse 2.5s linear infinite;
-      box-shadow: 0 0 50px 5px #d7abff6e;
+      /* box-shadow: 0 0 50px 5px #d7abff6e; */
+      box-shadow: 0 0 50px 5px rgba(0, 0, 0, 0.5);
     }
   }
   div:nth-child(1),
@@ -77,6 +80,12 @@ html::-webkit-scrollbar-thumb {
       height: 4px;
     }
     transition: transform 0.1s ease-out;
+  }
+}
+
+@media (max-width: 768px) {
+  .cursor {
+    display: none;
   }
 }
 
@@ -702,6 +711,7 @@ header .navbar ul li a:hover {
   background: linear-gradient(to bottom, #000031, #00002c);
   min-height: 68vh;
 }
+
 .work h2 {
   color: #fff;
   padding: 1rem;
