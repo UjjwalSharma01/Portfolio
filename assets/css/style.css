@@ -1163,14 +1163,15 @@ header .navbar ul li a:hover {
 .contact {
   background: linear-gradient(to right, #003366, #005599);
   min-height: auto;
+
 }
 .contact .container {
   max-width: 1050px;
   width: 100%;
-  background: linear-gradient(to right, #006699, #0099cc);
+  /* background: linear-gradient(to right, #006699, #0099cc); */
   border-radius: 1.5rem;
   margin: 2rem auto 0 auto;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+  /* box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15); */
 }
 .contact .container .content {
   display: flex;
