@@ -1639,3 +1639,6 @@ body.loading > *:not(.preloader-wrapper) {
   }
 }
 /* preloader animation ends */
+body {
+  cursor: url("https://img.icons8.com/material-rounded/24/FFFFFF/blue-pointer.png"), auto; /* Changes the cursor to a custom image when over the body */
+}
