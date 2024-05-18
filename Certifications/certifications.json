@@ -22,6 +22,24 @@
         "desc": "By Indian Institute of Technology, Kanpur",
         "image": "digitalmarketing",
         "link": "https://drive.google.com/file/d/17cYAvNrSZ2putPqcpHs4yMlCOFrDK2nO/view?usp=drive_link"
+    },
+    {
+        "name": "Foundations of Cybersecurity",
+        "desc": "By Google",
+        "image": "Foundation",
+        "link": "https://coursera.org/share/b4f2d4722fd980ad127014979364a47f"
+    },
+    {
+        "name": "Communicating with Emotional Intelligence",
+        "desc": "By Linkedin",
+        "image": "emotional_intelligence",
+        "link": "https://www.linkedin.com/learning/certificates/e7214fa2e5ce1d0571f49a4f2747ed76ff9c1d2729f2f3b35693131be42545a7"
+    },
+    {
+        "name": "11 Inactions that Ruin a Leader's Reputation",
+        "desc": "By Linkedin Learning and PMI",
+        "image": "Leader",
+        "link": "https://www.linkedin.com/learning/certificates/eeca196d6ad47ce6113a408995c8980f8169d671b363c541216aaa16a27ea8ce?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_certifications_details%3BnPxVHsgAQAOj7TBZTYmaTg%3D%3D"
     }
 
 ]

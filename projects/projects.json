@@ -11,6 +11,35 @@
     }
   }, 
   {
+    "name": "PollSay",
+    "desc": "A simple Polling app",
+    "image": "pollsay",
+    "category": "Web development",
+    "links": {
+      "view": "https://pollsay.onrender.com",
+      "code": "https://github.com/UjjwalSharma01/PollSay"
+    }
+  },
+  {
+    "name": "Annadata",
+    "desc": "A revolutionary webapp for farmers",
+    "image": "annadata",
+    "category": "Web development",
+    "links": {
+      "view": "https://annadata-hackathon.onrender.com/annadata",
+      "code": "https://github.com/UjjwalSharma01/annadata-hackathon"
+    }  
+  },
+  {
+    "name": "Bio in Bytes",
+    "desc": "A simple and Terminal based Bio",
+    "image": "bio",
+    "category": "Web development",
+    "links": {
+      "view": "https://ujjwalbioinbytes.vercel.app/",
+      "code": "https://github.com/UjjwalSharma01/bio-in-bytes"
+    }
+  }, {
     "name": "Bio in Bytes",
     "desc": "A simple and Terminal based Bio",
     "image": "bio",
@@ -20,5 +49,4 @@
       "code": "https://github.com/UjjwalSharma01/bio-in-bytes"
     }
   }
-
 ]
