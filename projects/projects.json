@@ -39,14 +39,5 @@
       "view": "https://ujjwalbioinbytes.vercel.app/",
       "code": "https://github.com/UjjwalSharma01/bio-in-bytes"
     }
-  }, {
-    "name": "Bio in Bytes",
-    "desc": "A simple and Terminal based Bio",
-    "image": "bio",
-    "category": "Web development",
-    "links": {
-      "view": "https://ujjwalbioinbytes.vercel.app/",
-      "code": "https://github.com/UjjwalSharma01/bio-in-bytes"
-    }
   }
 ]
