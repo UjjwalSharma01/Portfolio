@@ -2,4 +2,4 @@ User-agent: *
 Disallow: /admin/
 Disallow: /login/
 
-Sitemap: https://ujjwalsharma.xyz/sitemap.xml
+Sitemap: https://ujjwalsharma.tech/sitemap.xml

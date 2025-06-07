@@ -1,0 +1,885 @@
+/* ========================================
+   PREMIUM EXPERIENCE SECTION
+   Designed to impress hiring managers with clean, professional design
+   ======================================== */
+
+/* Experience Section - Premium Container */
+#experience {
+    padding: 12rem 9% 8rem;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Background Effects for Premium Look */
+#experience::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(30, 64, 175, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(147, 51, 234, 0.05) 0%, transparent 50%);
+    z-index: 1;
+}
+
+/* Section Heading - Professional & Eye-catching */
+#experience .heading {
+    font-size: clamp(3.5rem, 5vw, 5rem);
+    text-align: center;
+    margin-bottom: 6rem;
+    color: #ffffff;
+    font-weight: 700;
+    position: relative;
+    z-index: 3;
+    text-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
+    background: linear-gradient(45deg, #3b82f6, #60a5fa, #93c5fd, #3b82f6);
+    background-size: 200% 200%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 6s ease-in-out infinite;
+}
+
+#experience .heading i {
+    color: #3b82f6;
+    margin-right: 1.5rem;
+    font-size: 0.9em;
+    filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.5));
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* Fallback for browsers that don't support background-clip */
+@supports not (background-clip: text) {
+    #experience .heading {
+        color: #3b82f6;
+        -webkit-text-fill-color: initial;
+    }
+}
+
+/* Experience Container - Premium Layout */
+.experience-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+/* Premium Timeline Design */
+.premium-timeline {
+    position: relative;
+    padding: 4rem 0;
+}
+
+/* Central Timeline Line - Glowing Effect */
+.premium-timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(180deg, 
+        transparent 0%, 
+        #3b82f6 20%, 
+        #60a5fa 50%, 
+        #3b82f6 80%, 
+        transparent 100%
+    );
+    transform: translateX(-50%);
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+    border-radius: 2px;
+}
+
+/* Experience Item - Premium Card Design */
+.experience-item {
+    position: relative;
+    margin: 6rem 0;
+    opacity: 0;
+    animation: slideInUp 0.6s ease-out forwards;
+}
+
+.experience-item:nth-child(1) { animation-delay: 0.1s; }
+.experience-item:nth-child(2) { animation-delay: 0.2s; }
+.experience-item:nth-child(3) { animation-delay: 0.3s; }
+.experience-item:nth-child(4) { animation-delay: 0.4s; }
+
+/* Professional loading animation for experience items */
+.experience-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, #3b82f6, transparent);
+    border-radius: 2px;
+    opacity: 0;
+    animation: loadingBar 3s ease-in-out infinite;
+}
+
+.experience-item:hover::before {
+    opacity: 0.8;
+}
+
+@keyframes loadingBar {
+    0% { transform: translateX(-100%); }
+    50% { transform: translateX(0%); }
+    100% { transform: translateX(100%); }
+}
+
+/* Left and Right Positioning */
+.experience-item.left {
+    padding-right: calc(50% + 4rem);
+}
+
+.experience-item.right {
+    padding-left: calc(50% + 4rem);
+    text-align: right;
+}
+
+/* Premium Card Styling */
+.experience-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 3.5rem;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
+    overflow: hidden;
+    box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.25),
+        0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.experience-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #3b82f6, #60a5fa, #93c5fd, #3b82f6);
+    background-size: 300% 300%;
+    border-radius: 22px;
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.3s ease;
+    animation: gradientShift 4s ease-in-out infinite;
+}
+
+.experience-card:hover::before {
+    opacity: 0.3;
+}
+
+.experience-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(59, 130, 246, 0.3);
+    box-shadow: 
+        0 35px 60px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(59, 130, 246, 0.2),
+        0 0 50px rgba(59, 130, 246, 0.15);
+}
+
+/* Timeline Connector Dots */
+.experience-connector {
+    position: absolute;
+    top: 3rem;
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    border: 4px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    box-shadow: 
+        0 0 0 4px rgba(59, 130, 246, 0.2),
+        0 0 20px rgba(59, 130, 246, 0.4);
+    z-index: 3;
+}
+
+.experience-item.left .experience-connector {
+    right: -4rem;
+    transform: translateX(50%);
+}
+
+.experience-item.right .experience-connector {
+    left: -4rem;
+    transform: translateX(-50%);
+}
+
+/* Organization/Company Name */
+.experience-organization {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.experience-item.right .experience-organization {
+    justify-content: flex-end;
+}
+
+.org-icon {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.8rem;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+/* Position Title */
+.experience-position {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #3b82f6;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+}
+
+/* Duration */
+.experience-duration {
+    font-size: 1.4rem;
+    color: #94a3b8;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.experience-item.right .experience-duration {
+    justify-content: flex-end;
+}
+
+.experience-duration i {
+    color: #3b82f6;
+}
+
+/* Description/Achievements */
+.experience-description {
+    font-size: 1.5rem;
+    line-height: 1.7;
+    color: #e2e8f0;
+    margin-bottom: 2rem;
+}
+
+/* Skills/Technologies Used */
+.experience-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.experience-item.right .experience-skills {
+    justify-content: flex-end;
+}
+
+.skill-tag {
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    color: #3b82f6;
+    padding: 0.6rem 1.2rem;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    animation: float 3s ease-in-out infinite;
+}
+
+.skill-tag:hover {
+    background: rgba(59, 130, 246, 0.2);
+    border-color: rgba(59, 130, 246, 0.5);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(59, 130, 246, 0.2);
+}
+
+.skill-tag:nth-child(1) { animation-delay: 0s; }
+.skill-tag:nth-child(2) { animation-delay: 0.5s; }
+.skill-tag:nth-child(3) { animation-delay: 1s; }
+.skill-tag:nth-child(4) { animation-delay: 1.5s; }
+.skill-tag:nth-child(5) { animation-delay: 2s; }
+
+/* Achievement Highlights */
+.experience-achievements {
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.achievement-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+    color: #e2e8f0;
+}
+
+/* Success animation for achievement icons */
+.achievement-icon {
+    animation: successPulse 2s ease-in-out infinite;
+}
+
+@keyframes successPulse {
+    0%, 100% { 
+        transform: scale(1);
+        filter: brightness(1);
+    }
+    50% { 
+        transform: scale(1.1);
+        filter: brightness(1.2);
+    }
+}
+
+.experience-item.right .achievement-item {
+    justify-content: flex-end;
+    text-align: right;
+}
+
+.achievement-icon {
+    color: #22c55e;
+    font-size: 1.6rem;
+    margin-top: 0.2rem;
+    flex-shrink: 0;
+}
+
+/* CTA Section - Encourages Contact */
+.experience-cta {
+    text-align: center;
+    margin-top: 8rem;
+    position: relative;
+    z-index: 3;
+}
+
+.experience-cta h3 {
+    font-size: 2.8rem;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+.experience-cta p {
+    font-size: 1.6rem;
+    color: #94a3b8;
+    margin-bottom: 3rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem 3rem;
+    border-radius: 50px;
+    font-size: 1.6rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-btn.primary {
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    color: white;
+    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+}
+
+.cta-btn.secondary {
+    background: rgba(255, 255, 255, 0.05);
+    color: #3b82f6;
+    border: 2px solid rgba(59, 130, 246, 0.3);
+}
+
+.cta-btn:hover {
+    transform: translateY(-3px);
+}
+
+.cta-btn.primary:hover {
+    box-shadow: 0 15px 40px rgba(59, 130, 246, 0.4);
+}
+
+.cta-btn.secondary:hover {
+    background: rgba(59, 130, 246, 0.1);
+    border-color: rgba(59, 130, 246, 0.5);
+}
+
+/* ========================================
+   ADDITIONAL PREMIUM ENHANCEMENTS
+   Specific features to grab hiring manager attention
+   ======================================== */
+
+/* Premium Badge for Current Position */
+.experience-item:first-child .experience-card::after {
+    content: 'CURRENT ROLE';
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+    animation: pulse 2s infinite;
+    z-index: 10;
+}
+
+/* Statistics Highlight Boxes */
+.experience-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+    padding: 2rem;
+    background: rgba(59, 130, 246, 0.05);
+    border-radius: 15px;
+    border: 1px solid rgba(59, 130, 246, 0.1);
+}
+
+.stat-item {
+    text-align: center;
+    padding: 1rem;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #3b82f6;
+    display: block;
+    text-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+}
+
+.stat-label {
+    font-size: 1.2rem;
+    color: #94a3b8;
+    margin-top: 0.5rem;
+}
+
+/* Impact Metrics - What Hiring Managers Love */
+.impact-metrics {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(16, 185, 129, 0.05));
+    border-left: 4px solid #22c55e;
+    padding: 2rem;
+    margin: 2rem 0;
+    border-radius: 0 15px 15px 0;
+}
+
+.impact-title {
+    font-size: 1.6rem;
+    color: #22c55e;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.impact-list {
+    list-style: none;
+    padding: 0;
+}
+
+.impact-list li {
+    padding: 0.8rem 0;
+    font-size: 1.4rem;
+    color: #e2e8f0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.impact-list li::before {
+    content: '▲';
+    color: #22c55e;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* Tech Stack Visualization */
+.tech-stack-visual {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2rem;
+    justify-content: center;
+}
+
+.tech-icon {
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tech-icon:hover {
+    transform: translateY(-5px) scale(1.1);
+    background: rgba(59, 130, 246, 0.2);
+    border-color: rgba(59, 130, 246, 0.4);
+    box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+}
+
+/* Leadership Qualities Showcase */
+.leadership-showcase {
+    background: linear-gradient(135deg, rgba(147, 51, 234, 0.1), rgba(124, 58, 237, 0.05));
+    border-radius: 20px;
+    padding: 3rem;
+    margin: 3rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.leadership-showcase::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(147, 51, 234, 0.05) 50%, transparent 70%);
+    animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+    0%, 100% { transform: translateX(-100%); }
+    50% { transform: translateX(100%); }
+}
+
+.leadership-title {
+    font-size: 2rem;
+    color: #a855f7;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.leadership-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.leadership-item {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+.leadership-item:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.leadership-icon {
+    font-size: 3rem;
+    color: #a855f7;
+    margin-bottom: 1rem;
+}
+
+.leadership-text {
+    font-size: 1.4rem;
+    color: #e2e8f0;
+    line-height: 1.6;
+}
+
+/* Testimonial-style Quote */
+.experience-quote {
+    background: rgba(255, 255, 255, 0.02);
+    border-left: 4px solid #3b82f6;
+    padding: 2rem;
+    margin: 2rem 0;
+    border-radius: 0 15px 15px 0;
+    font-style: italic;
+    position: relative;
+}
+
+.experience-quote::before {
+    content: '"';
+    font-size: 4rem;
+    color: #3b82f6;
+    position: absolute;
+    top: -10px;
+    left: 15px;
+    opacity: 0.5;
+}
+
+.quote-text {
+    font-size: 1.5rem;
+    color: #e2e8f0;
+    line-height: 1.6;
+    margin-left: 2rem;
+}
+
+.quote-author {
+    font-size: 1.2rem;
+    color: #94a3b8;
+    margin-top: 1rem;
+    text-align: right;
+    font-style: normal;
+}
+
+/* Call-to-Action Enhancement */
+.experience-cta {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(30, 64, 175, 0.05));
+    border-radius: 30px;
+    padding: 6rem 4rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.experience-cta::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+    animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Hiring Manager Focus Elements */
+.hiring-manager-note {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(220, 38, 38, 0.05));
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    border-radius: 15px;
+    padding: 2rem;
+    margin: 3rem 0;
+    position: relative;
+}
+
+.hiring-manager-note::before {
+    content: '🎯';
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    background: #1a1a2e;
+    padding: 0.5rem;
+    border-radius: 50%;
+    font-size: 1.5rem;
+}
+
+.note-title {
+    font-size: 1.6rem;
+    color: #ef4444;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    margin-left: 2rem;
+}
+
+.note-content {
+    font-size: 1.4rem;
+    color: #e2e8f0;
+    line-height: 1.6;
+}
+
+/* Animations */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    #experience {
+        padding: 10rem 5% 6rem;
+    }
+    
+    .experience-card {
+        padding: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    #experience {
+        padding: 8rem 4% 5rem;
+    }
+    
+    #experience .heading {
+        font-size: 3.5rem;
+        margin-bottom: 4rem;
+    }
+    
+    /* Mobile Timeline - Single Column */
+    .premium-timeline::before {
+        left: 3rem;
+    }
+    
+    .experience-item.left,
+    .experience-item.right {
+        padding-left: 8rem;
+        padding-right: 2rem;
+        text-align: left;
+    }
+    
+    .experience-item.left .experience-connector,
+    .experience-item.right .experience-connector {
+        left: 2rem;
+        transform: translateX(-50%);
+    }
+    
+    .experience-item.right .experience-organization,
+    .experience-item.right .experience-duration,
+    .experience-item.right .experience-skills,
+    .experience-item.right .achievement-item {
+        justify-content: flex-start;
+        text-align: left;
+    }
+    
+    .experience-card {
+        padding: 2.5rem;
+    }
+    
+    .experience-organization {
+        font-size: 2rem;
+    }
+    
+    .experience-position {
+        font-size: 1.6rem;
+    }
+    
+    .experience-description {
+        font-size: 1.4rem;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .cta-btn {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    #experience {
+        padding: 6rem 3% 4rem;
+    }
+    
+    #experience .heading {
+        font-size: 3rem;
+        margin-bottom: 3rem;
+    }
+    
+    .experience-item {
+        margin: 4rem 0;
+    }
+    
+    .experience-card {
+        padding: 2rem;
+    }
+    
+    .experience-organization {
+        font-size: 1.8rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    .org-icon {
+        width: 35px;
+        height: 35px;
+        font-size: 1.6rem;
+    }
+    
+    /* Enhanced mobile tech stack */
+    .tech-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 1.8rem;
+    }
+}
+
+/* Print Styles for Resume Downloads */
+@media print {
+    #experience {
+        background: white !important;
+        color: black !important;
+        padding: 2rem !important;
+    }
+    
+    .experience-card {
+        background: white !important;
+        border: 1px solid #ccc !important;
+        box-shadow: none !important;
+        page-break-inside: avoid;
+        margin-bottom: 2rem;
+    }
+    
+    .premium-timeline::before,
+    .experience-connector {
+        display: none;
+    }
+    
+    .experience-item.left,
+    .experience-item.right {
+        padding: 0 !important;
+        text-align: left !important;
+    }
+    
+    .skill-tag {
+        border: 1px solid #ccc !important;
+        background: #f5f5f5 !important;
+        color: #333 !important;
+    }
+}

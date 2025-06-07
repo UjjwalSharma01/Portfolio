@@ -1,0 +1,877 @@
+/* ========================================
+   PREMIUM NAVBAR STYLES - COMPLETE RESPONSIVE DESIGN
+   ======================================== */
+
+/* Main Header Container - Glass Morphism Design */
+.premium-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 5%;
+    height: 8rem;
+    
+    /* Premium Glass Morphism Background */
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    
+    /* Premium Shadow Effects */
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Scrolled State - Enhanced Glass Effect */
+.premium-navbar.scrolled {
+    background: rgba(5, 5, 5, 0.98);
+    backdrop-filter: blur(25px);
+    box-shadow: 
+        0 12px 40px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    border-bottom: 1px solid rgba(30, 64, 175, 0.3);
+}
+
+/* ========================================
+   LOGO SECTION - PERSONAL BRANDING
+   ======================================== */
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    z-index: 1001;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    text-decoration: none;
+    position: relative;
+    padding: 0.8rem 1.2rem;
+    border-radius: 12px;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.logo:hover {
+    background: rgba(30, 64, 175, 0.1);
+    border-color: rgba(30, 64, 175, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(30, 64, 175, 0.2);
+}
+
+.logo-icon {
+    width: 4.5rem;
+    height: 4.5rem;
+    background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.logo-icon::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.6s ease;
+}
+
+.logo:hover .logo-icon::before {
+    left: 100%;
+}
+
+.logo-icon i {
+    font-size: 2rem;
+    color: white;
+    z-index: 1;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.logo-text .name {
+    font-size: 2.2rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+}
+
+.logo-text .surname {
+    font-size: 2.2rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+}
+
+.logo-text .tagline {
+    font-size: 1rem;
+    color: #94a3b8;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+/* ========================================
+   NAVIGATION MENU - PREMIUM LINKS
+   ======================================== */
+
+.navbar {
+    display: flex;
+    align-items: center;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1.2rem 1.8rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #cbd5e1;
+    text-decoration: none;
+    border-radius: 10px;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    overflow: hidden;
+    text-transform: capitalize;
+    letter-spacing: 0.3px;
+}
+
+.nav-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(30, 64, 175, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%);
+    opacity: 0;
+    transition: all 0.4s ease;
+    z-index: -1;
+}
+
+.nav-link i {
+    font-size: 1.4rem;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+
+.nav-link span {
+    position: relative;
+    z-index: 1;
+}
+
+/* Hover Effects */
+.nav-link:hover,
+.nav-link.active {
+    color: #ffffff;
+    background: rgba(30, 64, 175, 0.15);
+    border: 1px solid rgba(30, 64, 175, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(30, 64, 175, 0.25);
+}
+
+.nav-link:hover::before,
+.nav-link.active::before {
+    opacity: 1;
+}
+
+.nav-link:hover i,
+.nav-link.active i {
+    opacity: 1;
+    color: #60a5fa;
+    transform: scale(1.1);
+}
+
+/* Active Link Indicator */
+.nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 50%;
+    width: 60%;
+    height: 2px;
+    background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+/* ========================================
+   RIGHT SIDE - CTA & AVAILABILITY
+   ======================================== */
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    z-index: 1001;
+    flex-shrink: 0;
+    min-width: auto;
+}
+
+.navbar-cta {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.cta-button {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1.2rem 2.4rem;
+    background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 1.4rem;
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 0 8px 25px rgba(30, 64, 175, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.6s ease;
+}
+
+.cta-button:hover::before {
+    left: 100%;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 15px 40px rgba(30, 64, 175, 0.6);
+}
+
+.cta-button i {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.cta-button:hover i {
+    transform: translateX(3px);
+}
+
+/* Availability Indicator */
+.availability-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.8rem 1.6rem;
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    border-radius: 25px;
+    font-size: 1.2rem;
+    color: #10b981;
+    font-weight: 600;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background: #10b981;
+    border-radius: 50%;
+    animation: pulse-dot 2s infinite;
+}
+
+@keyframes pulse-dot {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.7;
+        transform: scale(1.2);
+    }
+}
+
+/* ========================================
+   MOBILE MENU TOGGLE - HAMBURGER
+   ======================================== */
+
+.mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 3rem;
+    height: 3rem;
+    cursor: pointer;
+    z-index: 1002;
+    margin-left: 1rem;
+    padding: 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    position: relative;
+}
+
+.hamburger-line {
+    display: block;
+    width: 2rem;
+    height: 3px;
+    background: #ffffff;
+    border-radius: 2px;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    margin: 3px 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.mobile-menu-toggle.active .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.mobile-menu-toggle.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+    transform: translateX(20px);
+}
+
+.mobile-menu-toggle.active .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* ========================================
+   RESPONSIVE DESIGN - MOBILE FIRST
+   ======================================== */
+
+/* Large Tablets */
+@media (max-width: 1200px) {
+    .navbar-cta .availability-indicator {
+        display: none;
+    }
+    
+    .nav-link {
+        padding: 1rem 1.4rem;
+        font-size: 1.4rem;
+    }
+    
+    .premium-navbar {
+        padding: 1rem 3%;
+    }
+    
+    /* Reduce gap between navbar elements */
+    .navbar-right {
+        gap: 1.5rem;
+    }
+}
+
+/* Medium Tablets */
+@media (max-width: 991px) {
+    .premium-navbar {
+        padding: 1rem 3%;
+    }
+    
+    .nav-link span {
+        display: none;
+    }
+    
+    .nav-link {
+        padding: 1rem;
+        border-radius: 50%;
+        width: 4.5rem;
+        height: 4.5rem;
+        justify-content: center;
+    }
+    
+    .nav-link i {
+        font-size: 1.6rem;
+    }
+    
+    .logo-text .tagline {
+        display: none;
+    }
+    
+    .navbar-cta {
+        gap: 1rem;
+    }
+    
+    .cta-button {
+        padding: 1rem 1.8rem;
+        font-size: 1.3rem;
+    }
+}
+
+/* Mobile Phones */
+@media (max-width: 768px) {
+    .premium-navbar {
+        height: 7rem;
+        padding: 1rem 4%;
+        justify-content: space-between;
+    }
+    
+    /* Hide desktop navigation */
+    .navbar {
+        display: none;
+    }
+    
+    /* Show mobile menu toggle */
+    .mobile-menu-toggle {
+        display: flex;
+        background: rgba(255, 255, 255, 0.15);
+        padding: 0.5rem;
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    /* Fix navbar-right mobile layout */
+    .navbar-right {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        flex-shrink: 0;
+    }
+    
+    /* Hide desktop CTA in mobile navbar */
+    .navbar-right .navbar-cta {
+        display: none;
+    }
+    
+    /* Mobile navigation overlay - Full screen */
+    .navbar {
+        position: fixed;
+        top: 0;
+        right: -100vw;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.98);
+        backdrop-filter: blur(25px);
+        padding: 0;
+        margin: 0;
+        transition: right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        overflow: hidden;
+        z-index: 9999;
+        box-sizing: border-box;
+        
+        /* Force vertical layout */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .navbar.nav-toggle {
+        right: 0;
+    }
+    
+    /* Mobile menu container */
+    .nav-menu {
+        width: 90%;
+        max-width: 400px;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        
+        /* Force vertical stacking */
+        display: block;
+    }
+    
+    .nav-item {
+        width: 100%;
+        margin-bottom: 1.5rem;
+        display: block;
+    }
+    
+    .nav-link {
+        display: block;
+        width: 100%;
+        padding: 1.8rem 2rem;
+        border-radius: 12px;
+        text-align: center;
+        font-size: 1.6rem;
+        font-weight: 600;
+        background: rgba(255, 255, 255, 0.1);
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        color: #ffffff;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-sizing: border-box;
+    }
+    
+    .nav-link:hover,
+    .nav-link.active {
+        background: rgba(59, 130, 246, 0.3);
+        border-color: rgba(59, 130, 246, 0.6);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+        color: #ffffff;
+    }
+    
+    .nav-link span {
+        display: block;
+        color: #ffffff;
+        font-size: 1.6rem;
+        text-align: center;
+    }
+    
+    .nav-link i {
+        display: none;
+    }
+    
+    /* Mobile CTA section inside menu */
+    .navbar .navbar-cta {
+        display: flex;
+        width: 90%;
+        max-width: 400px;
+        padding: 2rem 0 0;
+        justify-content: center;
+        flex-direction: column;
+        gap: 1.5rem;
+        margin-top: 2rem;
+        border-top: 2px solid rgba(255, 255, 255, 0.2);
+        padding-top: 2rem;
+    }
+    
+    .navbar .cta-button {
+        display: block;
+        width: 100%;
+        padding: 1.8rem 2rem;
+        text-align: center;
+        font-size: 1.6rem;
+        font-weight: 600;
+        background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%);
+        border-radius: 12px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        text-decoration: none;
+        color: #ffffff;
+        box-sizing: border-box;
+    }
+    
+    /* Availability indicator in mobile menu */
+    .navbar .availability-indicator {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1.2rem 2rem;
+        font-size: 1.4rem;
+        font-weight: 600;
+        background: rgba(16, 185, 129, 0.2);
+        border: 2px solid rgba(16, 185, 129, 0.5);
+        border-radius: 12px;
+        color: #10b981;
+        box-sizing: border-box;
+    }
+    
+    /* Adjust logo for mobile */
+    .logo-text .name,
+    .logo-text .surname {
+        font-size: 1.8rem;
+    }
+    
+    .logo-icon {
+        width: 3.5rem;
+        height: 3.5rem;
+    }
+    
+    .logo-icon i {
+        font-size: 1.6rem;
+    }
+}
+
+/* Small Mobile Phones */
+@media (max-width: 480px) {
+    .premium-navbar {
+        height: 6.5rem;
+        padding: 1rem 3%;
+    }
+    
+    .navbar {
+        top: 0;
+        height: 100vh;
+    }
+    
+    .logo {
+        padding: 0.6rem 1rem;
+        gap: 1rem;
+    }
+    
+    .logo-text .name,
+    .logo-text .surname {
+        font-size: 1.6rem;
+    }
+    
+    .logo-icon {
+        width: 3rem;
+        height: 3rem;
+    }
+    
+    .logo-icon i {
+        font-size: 1.4rem;
+    }
+    
+    .mobile-menu-toggle {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+    
+    .hamburger-line {
+        width: 1.8rem;
+        height: 2px;
+    }
+    
+    .nav-link {
+        padding: 1.5rem 2rem;
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .premium-navbar {
+        padding: 0.8rem 2%;
+    }
+    
+    .navbar {
+        padding-top: 2rem;
+    }
+    
+    .nav-link {
+        padding: 1.5rem 1.8rem;
+        font-size: 1.5rem;
+    }
+    
+    /* Improve hamburger visibility on very small screens */
+    .hamburger-line {
+        background: #ffffff;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        height: 3px;
+    }
+    
+    .mobile-menu-toggle {
+        background: rgba(255, 255, 255, 0.15);
+        padding: 0.6rem;
+        border-radius: 6px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    /* Ensure navbar-right doesn't overflow */
+    .navbar-right {
+        flex-shrink: 0;
+        min-width: auto;
+    }
+}
+
+/* ========================================
+   PERFORMANCE OPTIMIZATIONS
+   ======================================== */
+
+/* Hardware acceleration */
+.premium-navbar,
+.logo,
+.nav-link,
+.cta-button {
+    will-change: transform;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .premium-navbar,
+    .logo,
+    .nav-link,
+    .cta-button,
+    .hamburger-line {
+        transition: none;
+    }
+    
+    .status-dot {
+        animation: none;
+    }
+    
+    .logo-icon.animate-in,
+    .logo-text.animate-in {
+        animation: none;
+    }
+}
+
+/* ========================================
+   PREMIUM NAVBAR ANIMATIONS & EFFECTS
+   ======================================== */
+
+/* Logo animation on load */
+.logo-icon.animate-in {
+    animation: logoIconReveal 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.logo-text.animate-in {
+    animation: logoTextReveal 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s forwards;
+}
+
+@keyframes logoIconReveal {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) rotate(-10deg);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+@keyframes logoTextReveal {
+    0% {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Navbar reveal animation */
+.premium-navbar.reveal {
+    animation: navbarReveal 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes navbarReveal {
+    0% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Shimmer effect for CTA button */
+.cta-button.shimmer-effect::before {
+    animation: shimmer 0.6s ease-in-out;
+}
+
+@keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+/* Enhanced pulse effect for status dot */
+.status-dot.pulse {
+    animation: enhancedPulse 1s ease-in-out;
+}
+
+@keyframes enhancedPulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.3);
+        box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
+    }
+}
+
+/* Mobile menu body lock */
+body.mobile-menu-active {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+}
+
+/* Premium navbar focus states for accessibility */
+.nav-link:focus,
+.cta-button:focus,
+.logo:focus {
+    outline: 2px solid #60a5fa;
+    outline-offset: 2px;
+}
+
+/* Additional hover effects */
+.nav-link.hover-effect {
+    background: rgba(30, 64, 175, 0.2) !important;
+    transform: translateY(-2px) scale(1.02) !important;
+}
+
+/* ========================================
+   NAVBAR OVERRIDES & COMPATIBILITY
+   ======================================== */
+
+/* Ensure premium navbar takes precedence */
+.premium-navbar {
+    display: flex !important;
+    visibility: visible !important;
+}
+
+/* Hide old navbar if it exists */
+header:not(.premium-navbar) {
+    display: none !important;
+}
+
+/* Ensure proper spacing for content after fixed navbar */
+#home {
+    padding-top: 10rem;
+}
+
+/* Smooth scrolling support */
+html {
+    scroll-behavior: smooth;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .premium-navbar {
+        background: rgba(0, 0, 0, 0.95);
+        border-bottom: 2px solid #ffffff;
+    }
+    
+    .nav-link {
+        border: 1px solid #ffffff;
+    }
+    
+    .availability-indicator {
+        border: 2px solid #10b981;
+    }
+}

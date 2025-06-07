@@ -1,0 +1,905 @@
+/* ========================================
+   PREMIUM PROJECTS SECTION
+   Designed to impress hiring managers with clean, professional design
+   Built to showcase technical excellence and project impact
+   ======================================== */
+
+/* Projects Section - Premium Container */
+.work {
+    padding: 12rem 9% 8rem;
+    background: 
+        linear-gradient(135deg, #000031 0%, #000624 50%, #0a0a2e 100%),
+        radial-gradient(circle at 25% 25%, rgba(255, 193, 7, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(102, 126, 234, 0.05) 0%, transparent 50%);
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Dynamic Background Effects for Maximum Impact */
+.work::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(255, 193, 7, 0.12) 0%, transparent 60%),
+        radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 60%),
+        radial-gradient(circle at 40% 40%, rgba(147, 51, 234, 0.08) 0%, transparent 60%),
+        linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.02) 50%, transparent 70%);
+    z-index: 1;
+    animation: backgroundShift 20s ease-in-out infinite;
+}
+
+@keyframes backgroundShift {
+    0%, 100% { 
+        background: 
+            radial-gradient(circle at 20% 80%, rgba(255, 193, 7, 0.12) 0%, transparent 60%),
+            radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 60%),
+            radial-gradient(circle at 40% 40%, rgba(147, 51, 234, 0.08) 0%, transparent 60%);
+    }
+    50% { 
+        background: 
+            radial-gradient(circle at 60% 30%, rgba(255, 193, 7, 0.15) 0%, transparent 60%),
+            radial-gradient(circle at 20% 70%, rgba(59, 130, 246, 0.12) 0%, transparent 60%),
+            radial-gradient(circle at 80% 80%, rgba(147, 51, 234, 0.1) 0%, transparent 60%);
+    }
+}
+
+/* Floating Achievement Badges */
+.work::after {
+    content: '';
+    position: absolute;
+    top: 10%;
+    right: 5%;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(255, 193, 7, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: 1;
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) scale(1); }
+    50% { transform: translateY(-20px) scale(1.1); }
+}
+
+/* Section Heading - Maximum Impact Typography */
+.work h2 {
+    font-size: clamp(4rem, 6vw, 6rem);
+    color: #ffffff;
+    padding: 2rem 0 6rem 0;
+    text-align: center;
+    font-weight: 800;
+    position: relative;
+    z-index: 3;
+    text-shadow: 
+        0 0 30px rgba(255, 193, 7, 0.4),
+        0 0 60px rgba(255, 193, 7, 0.2),
+        0 0 90px rgba(255, 193, 7, 0.1);
+    background: linear-gradient(45deg, #ffc107, #ffeb3b, #fff59d, #ff6b6b, #667eea, #ffc107);
+    background-size: 400% 400%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 4s ease-in-out infinite;
+    letter-spacing: -0.02em;
+    transform: perspective(500px) rotateX(5deg);
+}
+
+.work h2::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, #ffc107, transparent);
+    border-radius: 2px;
+    animation: slideIn 2s ease-out 0.5s both;
+}
+
+.work h2::after {
+    content: '🚀 My Best Work 🚀';
+    position: absolute;
+    top: -4rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #cbd5e1;
+    font-family: "Nunito", sans-serif;
+    animation: fadeInDown 1s ease-out 1s both;
+    background: linear-gradient(90deg, #667eea, #764ba2, #667eea);
+    background-size: 200% 200%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: fadeInDown 1s ease-out 1s both, gradientShift 3s ease-in-out infinite 2s;
+}
+
+@keyframes slideIn {
+    from { width: 0; opacity: 0; }
+    to { width: 100px; opacity: 1; }
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateX(-50%) translateY(-20px); }
+    to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+.work .heading span {
+    color: #ffc107;
+    filter: drop-shadow(0 0 15px rgba(255, 193, 7, 0.6));
+    position: relative;
+}
+
+.work .heading span::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, #ffc107, #ffeb3b);
+    border-radius: 2px;
+    animation: underlineExpand 2s ease-out 1.5s both;
+}
+
+@keyframes underlineExpand {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    25% { background-position: 100% 50%; }
+    50% { background-position: 200% 50%; }
+    75% { background-position: 300% 50%; }
+}
+
+@keyframes pulse {
+    0%, 100% { 
+        transform: scale(1);
+        box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+    }
+    50% { 
+        transform: scale(1.05);
+        box-shadow: 0 6px 20px rgba(34, 197, 94, 0.5);
+    }
+}
+
+/* Projects Container - Enhanced Layout */
+.work .box-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 4rem;
+    margin: 4rem 0;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+}
+
+/* Premium Project Cards - Hiring Manager Appeal */
+.work .box-container .box {
+    position: relative;
+    border-radius: 3rem;
+    height: 450px;
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 
+        0 30px 60px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    cursor: pointer;
+    transform: perspective(1000px) rotateX(5deg);
+}
+
+/* Professional Hover Effects */
+.work .box-container .box:hover {
+    transform: perspective(1000px) rotateX(0deg) translateY(-20px) scale(1.03);
+    box-shadow: 
+        0 40px 80px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(255, 193, 7, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15),
+        0 0 50px rgba(255, 193, 7, 0.3);
+    border: 1px solid rgba(255, 193, 7, 0.3);
+}
+
+/* Premium Shimmer Effect */
+.work .box-container .box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg, 
+        transparent, 
+        rgba(255, 193, 7, 0.1), 
+        rgba(255, 255, 255, 0.05),
+        rgba(255, 193, 7, 0.1),
+        transparent
+    );
+    transition: left 1s ease;
+    z-index: 1;
+}
+
+.work .box-container .box:hover::before {
+    left: 100%;
+}
+
+/* Achievement Badge on Each Project */
+.work .box-container .box::after {
+    content: '🏆 Live Project';
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    padding: 0.8rem 1.5rem;
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 2rem;
+    box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+    z-index: 3;
+    transform: scale(0);
+    transition: transform 0.3s ease 0.2s;
+    animation: pulse 2s infinite 3s;
+}
+
+.work .box-container .box:hover::after {
+    transform: scale(1);
+}
+
+/* Enhanced Project Image with Professional Touch */
+.work .box-container .box img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: all 0.8s ease;
+    filter: brightness(0.7) contrast(1.1) saturate(1.2);
+}
+
+.work .box-container .box:hover img {
+    transform: scale(1.08);
+    filter: brightness(0.85) contrast(1.2) saturate(1.3);
+}
+
+/* Enhanced Content Overlay - Professional Presentation */
+.work .box-container .box .content {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 85%;
+    left: 0;
+    background: linear-gradient(
+        135deg, 
+        rgba(15, 15, 31, 0.97) 0%, 
+        rgba(26, 26, 46, 0.95) 50%,
+        rgba(38, 38, 38, 0.98) 100%
+    );
+    backdrop-filter: blur(15px);
+    display: flex;
+    flex-direction: column;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    border-top: 2px solid rgba(255, 193, 7, 0.3);
+    z-index: 2;
+}
+
+.work .box-container .box:hover .content {
+    top: 25%;
+}
+
+/* Premium Project Title Tag */
+.work .box-container .box .content .tag {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 6.5rem;
+    width: 100%;
+    padding: 0 2.5rem;
+    background: linear-gradient(135deg, #ffd900 0%, #ffc107 50%, #ffb300 100%);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(255, 193, 7, 0.3);
+}
+
+.work .box-container .box .content .tag::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #ffeb3b 0%, #ffd900 50%, #ffc107 100%);
+    transition: left 0.4s ease;
+    z-index: -1;
+}
+
+.work .box-container .box:hover .content .tag::before {
+    left: 0;
+}
+
+.work .box-container .box .content .tag h3 {
+    font-size: clamp(2rem, 2.8vw, 2.5rem);
+    color: #000;
+    font-weight: 800;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    letter-spacing: -0.01em;
+}
+
+/* Tech Stack Indicator */
+.work .box-container .box .content .tag::after {
+    content: '💻 Full Stack';
+    font-size: 1.2rem;
+    color: #333;
+    font-weight: 600;
+    background: rgba(0, 0, 0, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    z-index: 1;
+    animation: techBadgeShine 4s ease-in-out infinite 1s;
+}
+
+@keyframes techBadgeShine {
+    0%, 100% { 
+        background: rgba(0, 0, 0, 0.1);
+        color: #333;
+    }
+    50% { 
+        background: rgba(255, 255, 255, 0.2);
+        color: #000;
+    }
+}
+
+/* Enhanced Project Description */
+.work .desc {
+    margin: 3rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+    position: relative;
+}
+
+.work .desc p {
+    font-size: clamp(1.5rem, 2.2vw, 1.8rem);
+    color: #e2e8f0;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    opacity: 0.95;
+    transition: all 0.3s ease;
+    font-weight: 400;
+}
+
+.work .box-container .box:hover .desc p {
+    color: #f1f5f9;
+    opacity: 1;
+    transform: translateY(-2px);
+}
+
+/* Impact Metrics Section */
+.work .desc::before {
+    content: '';
+    position: absolute;
+    top: -1rem;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #ffc107, #ffeb3b);
+    border-radius: 2px;
+    opacity: 0;
+    transform: scaleX(0);
+    transition: all 0.5s ease 0.3s;
+}
+
+.work .box-container .box:hover .desc::before {
+    opacity: 1;
+    transform: scaleX(1);
+}
+
+/* Premium Action Buttons - Hiring Manager Focus */
+.work .desc .btns {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: auto;
+    gap: 1.5rem;
+}
+
+.work .desc .btns .btn {
+    flex: 1;
+    line-height: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.6rem 2.5rem;
+    border-radius: 2rem;
+    font-size: clamp(1.3rem, 1.8vw, 1.5rem);
+    color: #fff;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #667eea 100%);
+    background-size: 200% 200%;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.work .desc .btns .btn i {
+    margin-right: 0.8rem;
+    font-size: 1.4rem;
+    transition: transform 0.3s ease;
+}
+
+.work .desc .btns .btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 50%, #9f7aea 100%);
+    transition: left 0.5s ease;
+    z-index: -1;
+}
+
+.work .desc .btns .btn:hover::before {
+    left: 0;
+}
+
+.work .desc .btns .btn:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 12px 30px rgba(102, 126, 234, 0.6);
+    background-position: 100% 100%;
+}
+
+.work .desc .btns .btn:hover i {
+    transform: translateX(3px);
+}
+
+/* Live Demo Button Special Styling */
+.work .desc .btns .btn:first-child {
+    background: linear-gradient(135deg, #22c55e 0%, #16a34a 50%, #15803d 100%);
+    box-shadow: 0 6px 20px rgba(34, 197, 94, 0.4);
+}
+
+.work .desc .btns .btn:first-child::before {
+    background: linear-gradient(135deg, #16a34a 0%, #22c55e 50%, #10b981 100%);
+}
+
+.work .desc .btns .btn:first-child:hover {
+    box-shadow: 0 12px 30px rgba(34, 197, 94, 0.6);
+}
+
+/* View All Projects Button */
+.work .viewall {
+    display: flex;
+    justify-content: center;
+    margin-top: 5rem;
+    position: relative;
+    z-index: 3;
+}
+
+.work .viewall .btn {
+    position: relative;
+    line-height: 0;
+    padding: 2rem 4rem;
+    border-radius: 2rem;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    color: #ffffff;
+    font-weight: 700;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    box-shadow: 
+        0 8px 25px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    text-align: center;
+    overflow: hidden;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    animation: buttonGlow 3s ease-in-out infinite 2s;
+}
+
+@keyframes buttonGlow {
+    0%, 100% { 
+        box-shadow: 
+            0 8px 25px rgba(0, 0, 0, 0.2),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+    50% { 
+        box-shadow: 
+            0 12px 35px rgba(102, 126, 234, 0.4),
+            inset 0 1px 0 rgba(255, 255, 255, 0.15),
+            0 0 30px rgba(102, 126, 234, 0.3);
+    }
+}
+
+.work .viewall .btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    transition: left 0.5s ease;
+    z-index: -1;
+}
+
+.work .viewall .btn:hover::before {
+    left: 0;
+}
+
+.work .viewall .btn span {
+    font-weight: 700;
+    font-size: clamp(1.5rem, 2vw, 1.8rem);
+    font-family: "Nunito", sans-serif;
+    position: relative;
+    z-index: 1;
+    transition: color 0.3s ease;
+}
+
+.work .viewall .btn i {
+    margin-left: 1rem;
+    font-size: 1.6rem;
+    transition: all 0.4s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.work .viewall .btn:hover {
+    border-color: #ffffff;
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+.work .viewall .btn:hover span,
+.work .viewall .btn:hover i {
+    color: #000;
+}
+
+.work .viewall .btn:hover i {
+    transform: translateX(8px);
+}
+
+/* ========================================
+   FINAL PREMIUM HIRING MANAGER ENHANCEMENTS
+   Adding impact metrics and achievement indicators
+   ======================================== */
+
+/* Success Metrics Overlay */
+.work .box-container .box .metrics-overlay {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.95), rgba(16, 163, 74, 0.9));
+    border-radius: 1.5rem;
+    padding: 1rem;
+    transform: translateY(100%);
+    opacity: 0;
+    transition: all 0.5s ease;
+    z-index: 4;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.work .box-container .box:hover .metrics-overlay {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.work .metrics-overlay .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.8rem;
+    text-align: center;
+}
+
+.work .metrics-overlay .metric {
+    color: white;
+}
+
+.work .metrics-overlay .metric-value {
+    font-size: 1.4rem;
+    font-weight: 800;
+    display: block;
+    margin-bottom: 0.2rem;
+}
+
+.work .metrics-overlay .metric-label {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    font-weight: 500;
+}
+
+/* Premium Status Indicators */
+.work .box-container .box .status-indicators {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    display: flex;
+    gap: 0.5rem;
+    z-index: 4;
+}
+
+.work .status-indicators .status-badge {
+    padding: 0.4rem 0.8rem;
+    border-radius: 1rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: white;
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.4s ease;
+}
+
+.work .box-container .box:hover .status-badge {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.work .status-badge.featured {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+    animation-delay: 0.1s;
+}
+
+.work .status-badge.responsive {
+    background: linear-gradient(135deg, #4ecdc4, #44a08d);
+    animation-delay: 0.2s;
+}
+
+.work .status-badge.optimized {
+    background: linear-gradient(135deg, #45b7d1, #2196f3);
+    animation-delay: 0.3s;
+}
+
+/* Performance Score Indicator */
+.work .box-container .box .performance-score {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: conic-gradient(#22c55e 0deg 324deg, rgba(255, 255, 255, 0.2) 324deg 360deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 800;
+    font-size: 0.9rem;
+    z-index: 4;
+    transform: scale(0);
+    transition: transform 0.5s ease 0.3s;
+    box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+}
+
+.work .box-container .box:hover .performance-score {
+    transform: scale(1);
+}
+
+/* Hiring Manager Call-to-Action Enhancement */
+.work .hiring-manager-cta {
+    text-align: center;
+    margin-top: 3rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+    border-radius: 2rem;
+    border: 1px solid rgba(102, 126, 234, 0.2);
+    position: relative;
+    z-index: 3;
+}
+
+.work .hiring-manager-cta h3 {
+    font-size: 2.2rem;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.work .hiring-manager-cta p {
+    font-size: 1.6rem;
+    color: #cbd5e1;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.work .hiring-manager-cta .cta-buttons {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.work .hiring-manager-cta .cta-btn {
+    padding: 1.5rem 3rem;
+    border-radius: 2rem;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.work .hiring-manager-cta .cta-btn.primary {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.work .hiring-manager-cta .cta-btn.secondary {
+    background: transparent;
+    color: #667eea;
+    border: 2px solid #667eea;
+}
+
+.work .hiring-manager-cta .cta-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(102, 126, 234, 0.5);
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 768px) {
+    .work {
+        padding: 8rem 5% 6rem;
+    }
+    
+    .work h2 {
+        transform: none;
+        font-size: clamp(3rem, 8vw, 4rem);
+        padding: 1rem 0 4rem 0;
+    }
+    
+    .work h2::after {
+        font-size: 1.2rem;
+        top: -3rem;
+    }
+    
+    .work .box-container {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        margin: 1rem 0;
+    }
+    
+    .work .box-container .box {
+        flex: 1 1 100%;
+        height: 35rem;
+        margin: 0 auto;
+        transform: none;
+        max-width: 400px;
+    }
+    
+    .work .box-container .box:hover {
+        transform: translateY(-10px) scale(1.02);
+    }
+    
+    .work .desc .btns {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .work .desc .btns .btn {
+        width: 100%;
+        padding: 1.4rem 2rem;
+        font-size: 1.4rem;
+    }
+    
+    .work .viewall .btn {
+        padding: 1.5rem 3rem;
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .work {
+        padding: 6rem 3% 4rem;
+    }
+    
+    .work h2 {
+        font-size: clamp(2.5rem, 10vw, 3.5rem);
+    }
+    
+    .work .box-container .box {
+        height: 32rem;
+        border-radius: 2rem;
+    }
+    
+    .work .box-container .box img {
+        object-fit: contain;
+    }
+    
+    .work .desc {
+        margin: 2rem 1.5rem;
+    }
+    
+    .work .desc p {
+        font-size: 1.4rem;
+        line-height: 1.6;
+    }
+    
+    .work .viewall .btn {
+        padding: 1.2rem 2.5rem;
+        font-size: 1.4rem;
+    }
+}
+
+/* Tablet Specific Optimizations */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .work .box-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem;
+    }
+    
+    .work .box-container .box {
+        height: 420px;
+    }
+}
+
+/* Loading Animation for Premium Feel */
+.work .box-container .box {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+.work .box-container .box:nth-child(1) { animation-delay: 0.1s; }
+.work .box-container .box:nth-child(2) { animation-delay: 0.2s; }
+.work .box-container .box:nth-child(3) { animation-delay: 0.3s; }
+.work .box-container .box:nth-child(4) { animation-delay: 0.4s; }
+.work .box-container .box:nth-child(5) { animation-delay: 0.5s; }
+.work .box-container .box:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: perspective(1000px) rotateX(10deg) translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: perspective(1000px) rotateX(5deg) translateY(0);
+    }
+}
+
+/* Premium Hover Effects for Individual Elements */
+.work .box-container .box:hover .content .tag h3 {
+    animation: titlePulse 0.6s ease-in-out;
+}
+
+@keyframes titlePulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+}
+
+/* Enhanced Focus States for Accessibility */
+.work .desc .btns .btn:focus {
+    outline: 2px solid #ffc107;
+    outline-offset: 2px;
+    transform: translateY(-2px) scale(1.01);
+}
+
+.work .viewall .btn:focus {
+    outline: 2px solid #667eea;
+    outline-offset: 2px;
+    transform: translateY(-3px);
+}

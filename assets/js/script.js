@@ -22,22 +22,38 @@ $('[data-animate="true"]').each(function (i) {
 
 $(document).ready(function () {
 
+    // Enhanced Mobile Menu Toggle for Premium Navbar
     $('#menu').click(function () {
-        $(this).toggleClass('fa-times');
+        $(this).toggleClass('active');
         $('.navbar').toggleClass('nav-toggle');
+        $('.premium-navbar').toggleClass('mobile-menu-open');
+        
+        // Prevent body scroll when mobile menu is open
+        if ($(this).hasClass('active')) {
+            $('body').addClass('mobile-menu-active');
+        } else {
+            $('body').removeClass('mobile-menu-active');
+        }
     });
 
+    // Enhanced Scroll Handler for Premium Navbar
     $(window).on('scroll load', function () {
-        $('#menu').removeClass('fa-times');
+        // Close mobile menu on scroll
+        $('#menu').removeClass('active');
         $('.navbar').removeClass('nav-toggle');
+        $('.premium-navbar').removeClass('mobile-menu-open');
+        $('body').removeClass('mobile-menu-active');
 
-        if (window.scrollY > 60) {
+        // Premium navbar scroll effect
+        if (window.scrollY > 50) {
+            $('.premium-navbar').addClass('scrolled');
             document.querySelector('#scroll-top').classList.add('active');
         } else {
+            $('.premium-navbar').removeClass('scrolled');
             document.querySelector('#scroll-top').classList.remove('active');
         }
 
-        // scroll spy
+        // Enhanced scroll spy for premium navbar
         $('section').each(function () {
             let height = $(this).height();
             let offset = $(this).offset().top - 200;
@@ -45,21 +61,97 @@ $(document).ready(function () {
             let id = $(this).attr('id');
 
             if (top > offset && top < offset + height) {
-                $('.navbar ul li a').removeClass('active');
-                $('.navbar').find(`[href="#${id}"]`).addClass('active');
+                $('.nav-menu .nav-link').removeClass('active');
+                $('.nav-menu').find(`[href="#${id}"]`).addClass('active');
             }
         });
     });
 
 
-    // smooth scrolling
+    // Enhanced smooth scrolling for premium navbar
     $('a[href*="#"]').on('click', function (e) {
         e.preventDefault();
-        $('html, body').animate({
-            scrollTop: $($(this).attr('href')).offset().top,
-        }, 500, 'linear')
+        
+        // Close mobile menu if open
+        $('#menu').removeClass('active');
+        $('.navbar').removeClass('nav-toggle');
+        $('.premium-navbar').removeClass('mobile-menu-open');
+        $('body').removeClass('mobile-menu-active');
+        
+        // Smooth scroll with offset for fixed navbar
+        const target = $($(this).attr('href'));
+        if (target.length) {
+            $('html, body').animate({
+                scrollTop: target.offset().top - 100, // Offset for fixed navbar
+            }, 800, 'easeInOutQuart');
+        }
     });
 
+    // Premium Navbar Enhancements
+    initPremiumNavbar();
+
+});
+
+// Premium Navbar Enhancement Functions
+function initPremiumNavbar() {
+    // Logo animation on page load
+    setTimeout(() => {
+        $('.logo-icon').addClass('animate-in');
+        $('.logo-text').addClass('animate-in');
+    }, 500);
+
+    // Add hover effects to navigation items
+    $('.nav-link').on('mouseenter', function() {
+        $(this).addClass('hover-effect');
+    }).on('mouseleave', function() {
+        $(this).removeClass('hover-effect');
+    });
+
+    // CTA button enhancement
+    $('.cta-button').on('mouseenter', function() {
+        $(this).addClass('shimmer-effect');
+        setTimeout(() => {
+            $(this).removeClass('shimmer-effect');
+        }, 600);
+    });
+
+    // Availability indicator animation
+    setInterval(() => {
+        $('.status-dot').addClass('pulse');
+        setTimeout(() => {
+            $('.status-dot').removeClass('pulse');
+        }, 1000);
+    }, 3000);
+
+    // Intersection Observer for navbar reveal animation
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const navbarObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                $('.premium-navbar').addClass('reveal');
+            }
+        });
+    }, observerOptions);
+
+    // Observe the hero section for navbar animation
+    const heroSection = document.querySelector('#home');
+    if (heroSection) {
+        navbarObserver.observe(heroSection);
+    }
+}
+
+// Keyboard navigation support for accessibility
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        $('#menu').removeClass('active');
+        $('.navbar').removeClass('nav-toggle');
+        $('.premium-navbar').removeClass('mobile-menu-open');
+        $('body').removeClass('mobile-menu-active');
+    }
 });
 
 document.addEventListener('visibilitychange',
@@ -75,71 +167,141 @@ document.addEventListener('visibilitychange',
 
 // <!-- typed js effect starts -->
 var typed = new Typed(".typing-text", {
-    strings: ["block-chain developer", "web developer" , "problem solver"],
+    strings: [
+        "web applications", 
+        "software solutions", 
+        "backend systems", 
+        "user interfaces",
+        "scalable products"
+    ],
     loop: true,
-    typeSpeed: 25,
-    backSpeed: 25,
-    backDelay: 600,
+    typeSpeed: 50,
+    backSpeed: 30,
+    backDelay: 2000,
+    showCursor: true,
+    cursorChar: '|',
+    smartBackspace: true
 });
 // <!-- typed js effect ends -->
 
-// async function fetchData() - for fetching data from json file 
+// async function fetchData() - for fetching data from json file with enhanced error handling
 
 async function fetchData(type = "skills") {
-    let response
-    if(type==="skills"){
-        response = await fetch("./skills.json")
-    }else if(type === "projects"){
-        response = await fetch("./projects/projects.json")
-    }else if(type === "certifications"){
-        response = await fetch("./Certifications/certifications.json")
+    try {
+        let response;
+        if(type === "skills"){
+            response = await fetch("./skills.json")
+        } else if(type === "projects"){
+            response = await fetch("./projects/projects.json")
+        } else if(type === "certifications"){
+            response = await fetch("./Certifications/certifications.json")
+        }
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error(`Error fetching ${type} data:`, error);
+        return [];
     }
-    const data = await response.json();
-    return data;
 }
 
-// function showSkills(skills) - for showing skills in skills section
+// function showSkills(skills) - Updated for new skills section structure
 function showSkills(skills) {
-    let skillsContainer = document.getElementById("skillsContainer");
-    let skillHTML = "";
-    skills.forEach(skill => {
-        skillHTML += `
-        <div class="bar">
-              <div class="info">
-                <img src=${skill.icon} alt="skill" />
-                <span>${skill.name}</span>
-              </div>
-            </div>`
+    // Check if the new skills section exists
+    const skillsSection = document.querySelector('#skills');
+    if (!skillsSection) {
+        console.log('New skills section not found, skipping skills display');
+        return;
+    }
+    
+    // The new skills section uses a different structure with predefined skills
+    // This function is now optional since skills are already in HTML
+    console.log('Skills section found with new structure - skills are predefined in HTML');
+    
+    // Add any dynamic enhancements here if needed
+    const skillCards = document.querySelectorAll('.skill-card');
+    skillCards.forEach((card, index) => {
+        // Add staggered animation delays
+        card.style.animationDelay = `${index * 0.1}s`;
+        
+        // Add hover effects
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-5px) scale(1.02)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+        });
     });
-    skillsContainer.innerHTML = skillHTML;
 }
 
 
 
-function showProjects(projects) {
-    let projectsContainer = document.querySelector("#projects .box-container");
-    let projectHTML = "";
-    projects.slice(0, 10).filter(project => project.category != "android").forEach(project => {
-        projectHTML += `
-        <div class="box tilt">
-      <img draggable="false" src="assets/images/projects/${project.image}.png" alt="project" />
-      <div class="content">
-        <div class="tag">
-        <h3>${project.name}</h3>
-        </div>
-        <div class="desc">
-          <p>${project.desc}</p>
-          <div class="btns">
-            <a href="${project.links.view}" class="btn" target="_blank"><i class="fas fa-eye"></i> View</a>
-            <a href="${project.links.code}" class="btn" target="_blank">Code <i class="fas fa-code"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>`
-    });
-    projectsContainer.innerHTML = projectHTML;
+// OLD PROJECTS FUNCTION - REPLACED BY PREMIUM PROJECTS MODULE
+// function showProjects(projects) {
+//     let projectsContainer = document.querySelector("#projects .box-container");
+//     let projectHTML = "";
+//     
+//     // Simplified metrics data - focused on key hiring manager appeal
+//     const projectMetrics = [
+//         { views: "2.5K+", score: 90, uptime: "99.9%" },
+//         { views: "1.8K+", score: 85, uptime: "99.8%" },
+//         { views: "3.2K+", score: 92, uptime: "100%" },
+//         { views: "1.2K+", score: 88, uptime: "99.7%" }
+//     ];
+//     
+//     projects.slice(0, 10).filter(project => project.category != "android").forEach((project, index) => {
+//         const metrics = projectMetrics[index] || { views: "1K+", score: 85, uptime: "99%" };
+//         
+//         projectHTML += `
+//         <div class="box tilt" style="animation-delay: ${index * 0.15}s; --progress: ${metrics.score * 3.6}deg;">
+//             <!-- Performance Score -->
+//             <div class="performance-score">${metrics.score}</div>
+//             
+//             <img draggable="false" src="assets/images/projects/${project.image}.png" alt="project" />
+//             
+//             <!-- Quick Metrics - Only Show on Hover -->
+//             <div class="quick-metrics">
+//                 <div class="metric">
+//                     <span class="metric-value">${metrics.views}</span>
+//                     <span class="metric-label">Views</span>
+//                 </div>
+//                 <div class="metric">
+//                     <span class="metric-value">${metrics.score}%</span>
+//                     <span class="metric-label">Score</span>
+//                 </div>
+//                 <div class="metric">
+//                     <span class="metric-value">${metrics.uptime}</span>
+//                     <span class="metric-label">Uptime</span>
+//                 </div>
+//             </div>
+//             
+//             <div class="content">
+//                 <div class="tag">
+//                     <h3>${project.name}</h3>
+//                 </div>
+//                 <div class="desc">
+//                     <p>${project.desc}</p>
+//                     <div class="btns">
+//                         <a href="${project.links.view}" class="btn" target="_blank" rel="noopener noreferrer">
+//                             <i class="fas fa-eye"></i> Live Demo
+//                         </a>
+//                         <a href="${project.links.code}" class="btn" target="_blank" rel="noopener noreferrer">
+//                             <i class="fas fa-code"></i> Source Code
+//                         </a>
+//                     </div>
+//                 </div>
+//             </div>
+//         </div>`
+//     });
+//     projectsContainer.innerHTML = projectHTML;
 
-    // function ends here
+    // END OF OLD PROJECTS FUNCTION - REPLACED BY PREMIUM PROJECTS MODULE
+    // }
 
     // function to show certificates in education section
 
@@ -158,9 +320,9 @@ function showProjects(projects) {
 function showCertifications(certifications) {
     let certificationsContainer = document.querySelector("#certifications .box-container");
     let certificationHTML = "";
-    certifications.forEach(certification => {
+    certifications.forEach((certification, index) => {
         certificationHTML += `
-        <div class="box">
+        <div class="box" style="animation-delay: ${index * 0.15}s;">
             <img draggable="false" src="Certifications/images/${certification.image}.png" alt="certification" />
             <div class="content">
                 <div class="tag">
@@ -169,7 +331,9 @@ function showCertifications(certifications) {
                 <div class="desc">
                     <p>${certification.desc}</p>
                     <div class="btns">
-                        <a href="${certification.link}" class="btn" target="_blank"><i class="fas fa-eye"></i> View</a>
+                        <a href="${certification.link}" class="btn" target="_blank" rel="noopener noreferrer">
+                            <i class="fas fa-eye"></i> View
+                        </a>
                     </div>
                 </div>
             </div>
@@ -197,31 +361,49 @@ function showCertifications(certifications) {
       // Add ScrollReveal animations as needed
     }
 
+    // OLD PROJECT TILT AND SCROLL EFFECTS - NOW HANDLED BY PREMIUM PROJECTS MODULE
     // <!-- tilt js effect starts -->
-    VanillaTilt.init(document.querySelectorAll(".tilt"), {
-        max: 15,
-    });
+    // VanillaTilt.init(document.querySelectorAll(".tilt"), {
+    //     max: 15,
+    // });
     // <!-- tilt js effect ends -->
 
-    /* ===== SCROLL REVEAL ANIMATION ===== */
-    const srtop = ScrollReveal({
-        origin: 'top',
-        distance: '80px',
-        duration: 1000,
-        reset: true
-    });
+    // /* ===== SCROLL REVEAL ANIMATION ===== */
+    // const srtop = ScrollReveal({
+    //     origin: 'top',
+    //     distance: '80px',
+    //     duration: 1000,
+    //     reset: true
+    // });
 
-    /* SCROLL PROJECTS */
-    srtop.reveal('.work .box', { interval: 200 });
-  }
+    // /* SCROLL PROJECTS */
+    // srtop.reveal('.work .box', { interval: 200 });
+//   }
 
+// Updated data fetching for new portfolio structure
 fetchData().then(data => {
-    showSkills(data);
+    if (data && data.length > 0) {
+        showSkills(data);
+    } else {
+        console.log('No skills data found or using static skills from HTML');
+        // Initialize the skills section with static content
+        showSkills([]);
+    }
+}).catch(error => {
+    console.log('Skills data fetch failed, using static content:', error);
+    showSkills([]);
 });
 
-fetchData("projects").then(data => {
-    showProjects(data);
-});
+// Old projects functionality replaced by premium projects module
+// fetchData("projects").then(data => {
+//     if (data && data.length > 0) {
+//         showProjects(data);
+//     } else {
+//         console.log('No projects data found');
+//     }
+// }).catch(error => {
+//     console.error('Projects data fetch failed:', error);
+// });
 
 // <!-- tilt js effect starts -->
 VanillaTilt.init(document.querySelectorAll(".tilt"), {
@@ -288,7 +470,7 @@ srtop.reveal('.skills .container .bar', { delay: 400 });
 srtop.reveal('.education .box', { interval: 150 });
 
 /* SCROLL PROJECTS */
-srtop.reveal('.work .box', { interval: 200 });
+// srtop.reveal('.work .box', { interval: 200 }); // Commented out to prevent conflicts with premium projects section
 
 /* SCROLL EXPERIENCE */
 srtop.reveal('.experience .timeline', { delay: 400 });
@@ -396,3 +578,268 @@ window.addEventListener('DOMContentLoaded', function() {
   }, 3000); // 3000 milliseconds = 3 seconds
 });
 // preloader function ends here
+
+// Enhanced user experience improvements
+document.addEventListener('DOMContentLoaded', function() {
+    // Add loading states for better UX
+    addLoadingStates();
+    
+    // Add smooth page transitions
+    addPageTransitions();
+    
+    // Add enhanced form validation feedback
+    enhanceFormValidation();
+    
+    // Add intersection observer for enhanced animations
+    addIntersectionAnimations();
+});
+
+function addLoadingStates() {
+    // Add loading state to contact form submission
+    const originalSendMail = window.sendMail;
+    window.sendMail = function() {
+        const button = document.querySelector('.contact .button-area button');
+        const originalText = button.innerHTML;
+        
+        // Show loading state
+        button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+        button.disabled = true;
+        
+        // Call original function with enhanced feedback
+        const result = originalSendMail();
+        
+        // Reset button after delay
+        setTimeout(() => {
+            button.innerHTML = originalText;
+            button.disabled = false;
+        }, 2000);
+        
+        return result;
+    };
+}
+
+function addPageTransitions() {
+    // Add smooth fade-in effect for sections
+    const sections = document.querySelectorAll('section');
+    sections.forEach(section => {
+        section.style.opacity = '0';
+        section.style.transform = 'translateY(30px)';
+        section.style.transition = 'all 0.6s ease';
+    });
+    
+    // Trigger animations when scrolling
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, { threshold: 0.1 });
+    
+    sections.forEach(section => observer.observe(section));
+}
+
+function enhanceFormValidation() {
+    const inputs = document.querySelectorAll('#contactForm input, #contactForm textarea');
+    
+    inputs.forEach(input => {
+        // Add real-time validation feedback
+        input.addEventListener('input', function() {
+            const field = this.closest('.field') || this.closest('.message');
+            if (this.value.trim()) {
+                field.classList.add('valid');
+                field.classList.remove('invalid');
+            } else {
+                field.classList.remove('valid');
+            }
+        });
+        
+        input.addEventListener('blur', function() {
+            const field = this.closest('.field') || this.closest('.message');
+            if (!this.value.trim()) {
+                field.classList.add('invalid');
+            }
+        });
+    });
+}
+
+function addIntersectionAnimations() {
+    // Add stagger animation for skill cards
+    const skillCards = document.querySelectorAll('.skills .bar');
+    const projectCards = document.querySelectorAll('.work .box');
+    
+    const staggerObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0) scale(1)';
+                }, index * 100);
+            }
+        });
+    }, { threshold: 0.1 });
+    
+    [...skillCards, ...projectCards].forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(50px) scale(0.9)';
+        card.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+        staggerObserver.observe(card);
+    });
+}
+
+// Enhanced scroll behavior for navigation
+function enhanceNavigation() {
+    const navLinks = document.querySelectorAll('.navbar a[href^="#"]');
+    
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            
+            if (targetElement) {
+                // Add smooth scroll with offset for header
+                const headerHeight = document.querySelector('header').offsetHeight;
+                const targetPosition = targetElement.offsetTop - headerHeight - 20;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+                
+                // Add active state animation
+                this.classList.add('clicked');
+                setTimeout(() => this.classList.remove('clicked'), 300);
+            }
+        });
+    });
+}
+
+// Initialize enhanced navigation
+enhanceNavigation();
+
+// Add floating particles animation
+function addFloatingParticles() {
+    const particleContainer = document.createElement('div');
+    particleContainer.className = 'floating-particles';
+    document.body.appendChild(particleContainer);
+    
+    for (let i = 0; i < 15; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.cssText = `
+            position: fixed;
+            width: 4px;
+            height: 4px;
+            background: rgba(102, 126, 234, 0.6);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1;
+            animation: float ${5 + Math.random() * 5}s infinite linear;
+            left: ${Math.random() * 100}vw;
+            top: ${Math.random() * 100}vh;
+        `;
+        particleContainer.appendChild(particle);
+    }
+}
+
+// Initialize floating particles
+addFloatingParticles();
+
+// ========================================
+// SKILLS SECTION TAB FUNCTIONALITY
+// ========================================
+
+// Skills tab switching functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const tabButtons = document.querySelectorAll('.category-tab');
+    const categoryContents = document.querySelectorAll('.category-content');
+    
+    // Handle tab button clicks
+    tabButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const category = this.getAttribute('data-category');
+            
+            // Remove active class from all buttons and contents
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            categoryContents.forEach(content => content.classList.remove('active'));
+            
+            // Add active class to clicked button and corresponding content
+            this.classList.add('active');
+            document.getElementById(category).classList.add('active');
+            
+            // Animate skill cards in the newly active category
+            const activeCards = document.querySelectorAll(`#${category} .skill-card`);
+            activeCards.forEach((card, index) => {
+                card.style.animation = 'none';
+                setTimeout(() => {
+                    card.style.animation = `slideInUp 0.6s ease forwards ${index * 0.1}s`;
+                }, 50);
+            });
+            
+            // Animate progress bars for the active category
+            setTimeout(() => {
+                animateProgressBarsForCategory(category);
+            }, 200);
+        });
+    });
+    
+    // Animate progress bars when skills section comes into view
+    const skillsSection = document.querySelector('.skills');
+    if (skillsSection) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateProgressBarsForCategory('frontend'); // Animate default category
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+        
+        observer.observe(skillsSection);
+    }
+    
+    // Function to animate progress bars for specific category
+    function animateProgressBarsForCategory(category) {
+        const activeContent = document.getElementById(category);
+        if (!activeContent) return;
+        
+        const progressBars = activeContent.querySelectorAll('.progress-fill');
+        progressBars.forEach((bar, index) => {
+            const targetWidth = bar.style.getPropertyValue('--progress-width') || '0%';
+            bar.style.width = '0%';
+            bar.style.transition = 'none';
+            
+            setTimeout(() => {
+                bar.style.transition = 'width 1.5s cubic-bezier(0.4, 0, 0.2, 1)';
+                bar.style.width = targetWidth;
+                bar.classList.add('animate');
+            }, index * 100);
+        });
+    }
+    
+    // Legacy function for backward compatibility
+    function animateProgressBars() {
+        animateProgressBarsForCategory('frontend');
+    }
+});
+
+// Add CSS animations for skill cards
+const skillsAnimationCSS = `
+    @keyframes slideInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+`;
+
+// Inject the CSS animation
+const styleSheet = document.createElement('style');
+styleSheet.textContent = skillsAnimationCSS;
+document.head.appendChild(styleSheet);
