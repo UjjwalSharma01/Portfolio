@@ -241,67 +241,7 @@ function showSkills(skills) {
 
 
 
-// OLD PROJECTS FUNCTION - REPLACED BY PREMIUM PROJECTS MODULE
-// function showProjects(projects) {
-//     let projectsContainer = document.querySelector("#projects .box-container");
-//     let projectHTML = "";
-//     
-//     // Simplified metrics data - focused on key hiring manager appeal
-//     const projectMetrics = [
-//         { views: "2.5K+", score: 90, uptime: "99.9%" },
-//         { views: "1.8K+", score: 85, uptime: "99.8%" },
-//         { views: "3.2K+", score: 92, uptime: "100%" },
-//         { views: "1.2K+", score: 88, uptime: "99.7%" }
-//     ];
-//     
-//     projects.slice(0, 10).filter(project => project.category != "android").forEach((project, index) => {
-//         const metrics = projectMetrics[index] || { views: "1K+", score: 85, uptime: "99%" };
-//         
-//         projectHTML += `
-//         <div class="box tilt" style="animation-delay: ${index * 0.15}s; --progress: ${metrics.score * 3.6}deg;">
-//             <!-- Performance Score -->
-//             <div class="performance-score">${metrics.score}</div>
-//             
-//             <img draggable="false" src="assets/images/projects/${project.image}.png" alt="project" />
-//             
-//             <!-- Quick Metrics - Only Show on Hover -->
-//             <div class="quick-metrics">
-//                 <div class="metric">
-//                     <span class="metric-value">${metrics.views}</span>
-//                     <span class="metric-label">Views</span>
-//                 </div>
-//                 <div class="metric">
-//                     <span class="metric-value">${metrics.score}%</span>
-//                     <span class="metric-label">Score</span>
-//                 </div>
-//                 <div class="metric">
-//                     <span class="metric-value">${metrics.uptime}</span>
-//                     <span class="metric-label">Uptime</span>
-//                 </div>
-//             </div>
-//             
-//             <div class="content">
-//                 <div class="tag">
-//                     <h3>${project.name}</h3>
-//                 </div>
-//                 <div class="desc">
-//                     <p>${project.desc}</p>
-//                     <div class="btns">
-//                         <a href="${project.links.view}" class="btn" target="_blank" rel="noopener noreferrer">
-//                             <i class="fas fa-eye"></i> Live Demo
-//                         </a>
-//                         <a href="${project.links.code}" class="btn" target="_blank" rel="noopener noreferrer">
-//                             <i class="fas fa-code"></i> Source Code
-//                         </a>
-//                     </div>
-//                 </div>
-//             </div>
-//         </div>`
-//     });
-//     projectsContainer.innerHTML = projectHTML;
 
-    // END OF OLD PROJECTS FUNCTION - REPLACED BY PREMIUM PROJECTS MODULE
-    // }
 
     // function to show certificates in education section
 
@@ -361,23 +301,7 @@ function showCertifications(certifications) {
       // Add ScrollReveal animations as needed
     }
 
-    // OLD PROJECT TILT AND SCROLL EFFECTS - NOW HANDLED BY PREMIUM PROJECTS MODULE
-    // <!-- tilt js effect starts -->
-    // VanillaTilt.init(document.querySelectorAll(".tilt"), {
-    //     max: 15,
-    // });
-    // <!-- tilt js effect ends -->
 
-    // /* ===== SCROLL REVEAL ANIMATION ===== */
-    // const srtop = ScrollReveal({
-    //     origin: 'top',
-    //     distance: '80px',
-    //     duration: 1000,
-    //     reset: true
-    // });
-
-    // /* SCROLL PROJECTS */
-    // srtop.reveal('.work .box', { interval: 200 });
 //   }
 
 // Updated data fetching for new portfolio structure
@@ -394,16 +318,7 @@ fetchData().then(data => {
     showSkills([]);
 });
 
-// Old projects functionality replaced by premium projects module
-// fetchData("projects").then(data => {
-//     if (data && data.length > 0) {
-//         showProjects(data);
-//     } else {
-//         console.log('No projects data found');
-//     }
-// }).catch(error => {
-//     console.error('Projects data fetch failed:', error);
-// });
+
 
 // <!-- tilt js effect starts -->
 VanillaTilt.init(document.querySelectorAll(".tilt"), {
@@ -412,24 +327,7 @@ VanillaTilt.init(document.querySelectorAll(".tilt"), {
 // <!-- tilt js effect ends -->
 
 
-// function to block developer options to prevent code stealing
-// document.onkeydown = function (e) {
-//     if (e.keyCode == 123) {
-//         return false;
-//     }
-//     if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
-//         return false;
-//     }
-//     if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
-//         return false;
-//     }
-//     if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
-//         return false;
-//     }
-//     if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
-//         return false;
-//     }
-// }
+
 
 
 
@@ -470,7 +368,7 @@ srtop.reveal('.skills .container .bar', { delay: 400 });
 srtop.reveal('.education .box', { interval: 150 });
 
 /* SCROLL PROJECTS */
-// srtop.reveal('.work .box', { interval: 200 }); // Commented out to prevent conflicts with premium projects section
+// Legacy projects scroll animation disabled - using premium projects module
 
 /* SCROLL EXPERIENCE */
 srtop.reveal('.experience .timeline', { delay: 400 });
