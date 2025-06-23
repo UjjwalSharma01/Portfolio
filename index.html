@@ -32,6 +32,8 @@
   <link rel="stylesheet" href="./assets/css/experience-section.css">
   <link rel="stylesheet" href="./assets/css/education-section.css">
   <link rel="stylesheet" href="./assets/css/projects-section-premium.css">
+  <link rel="stylesheet" href="./assets/css/certificates-section-premium.css">
+  <link rel="stylesheet" href="./assets/css/contact-section-premium.css">
   
   <!-- Include Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"  crossorigin="anonymous">
@@ -1249,11 +1251,16 @@
 
 <!-- certification section starts -->
 
-<section id="certifications", class = "certi">
-  <h2 class="heading"><i class="fas fa-certificate"></i> <span>Certifications</span></h2>
+<section id="certifications">
+  <h2 class="heading"><i class="fas fa-certificate"></i> Professional <span>Certifications</span></h2>
+  
+  <!-- Premium achievements banner will be added by JavaScript -->
+  
   <div class="box-container">
     <!-- Certifications will be inserted here by the showCertifications function and would be fetched from json-->
   </div>
+  
+  <!-- Call-to-action section will be added by JavaScript -->
 </section>
 
 <!-- certification section ends -->
@@ -1273,35 +1280,92 @@
         <div class="form-group">
           <div class="field">
             <i class="fas fa-user"></i>
-            <span><input type="text" id="name" name="name" placeholder="Name" required></span>
+            <span><input type="text" id="name" name="name" placeholder="Your Full Name" required></span>
           </div>   
           <span id="nameError" class="error"></span> 
           <div class="field">
             <i class="fas fa-envelope"></i>
-            <span><input type="email" id="email" name="email" placeholder="Email" required></span>
+            <span><input type="email" id="email" name="email" placeholder="Your Email Address" required></span>
           </div>
           <span id="emailError" class="error"></span>
         </div>
         <div class="form-group">
           <div class="field">
-            <i class="fas fa-book"></i>
-            <span><input type="text" id="topic" name="topic" placeholder="Subject" required></span>
+            <i class="fas fa-briefcase"></i>
+            <span><input type="text" id="topic" name="topic" placeholder="Subject (e.g., Job Opportunity, Collaboration)" required></span>
           </div>
           <span id="topicError" class="error"></span>
         </div>
         <div class="message">
-          <i class="fas fa-pencil-alt"></i>
-          <span><textarea cols="30" rows="10" id="message" name="message" placeholder="Message.." required></textarea></span>
+          <div class="field">
+            <i class="fas fa-pencil-alt"></i>
+            <span><textarea cols="30" rows="8" id="message" name="message" placeholder="Tell me about the opportunity or project you'd like to discuss..." required></textarea></span>
+          </div>
           <span id="messageError" class="error"></span>
         </div>
         <div class="button-area">                            
-          <button type="button" onclick="sendMail();"><i class="fas fa-paper-plane"></i> Send message</button>                            
+          <button type="button" onclick="sendMail();"><i class="fas fa-paper-plane"></i> Send Message</button>                            
         </div>                      
       </form>
-      <div id="alert" class="alert hidden">
-        <p>Message successfully sent!</p>
-        <button onclick="closeAlert()">OK</button>
+      
+      <!-- Contact Information Sidebar -->
+      <div class="contact-info">
+        <h3>Get In Touch</h3>
+        
+        <div class="contact-details">
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <div class="contact-item-content">
+              <h4>Email</h4>
+              <p>ujjwalsh2004@gmail.com</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <div class="contact-item-content">
+              <h4>Location</h4>
+              <p>New Delhi, India</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <i class="fas fa-clock"></i>
+            <div class="contact-item-content">
+              <h4>Availability</h4>
+              <p>Open for new opportunities</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <div class="contact-item-content">
+              <h4>Response Time</h4>
+              <p>Within 24 hours</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="contact-social">
+          <h4>Connect with me</h4>
+          <div class="social-links">
+            <a href="https://www.linkedin.com/in/ujjwalsharma01/" class="social-link" target="_blank" aria-label="LinkedIn">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://github.com/UjjwalSharma01" class="social-link" target="_blank" aria-label="GitHub">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="mailto:ujjwalsh2004@gmail.com" class="social-link" aria-label="Email">
+              <i class="fas fa-envelope"></i>
+            </a>
+          </div>
+        </div>
       </div>
+    </div>
+    
+    <div id="alert" class="alert hidden">
+      <p>Message successfully sent!</p>
+      <button onclick="closeAlert()">OK</button>
     </div>
   </div>
 </section>
@@ -1392,6 +1456,8 @@
 <script src="./assets/js/script.js"></script>
 <script src="./assets/js/experience-enhancements.js"></script>
 <script src="./assets/js/projects-premium.js"></script>
+<script src="./assets/js/certificates-premium.js"></script>
+<script src="./assets/js/contact-premium.js"></script>
 <!-- javascript inclusion ends here -->
 </body>
 </html>

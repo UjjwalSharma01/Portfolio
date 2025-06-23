@@ -261,18 +261,29 @@ function showCertifications(certifications) {
     let certificationsContainer = document.querySelector("#certifications .box-container");
     let certificationHTML = "";
     certifications.forEach((certification, index) => {
+        // Ensure consistent category mapping
+        const category = certification.category?.toLowerCase() || 'technology';
+        const provider = certification.provider || 'Professional Institution';
+        const skills = certification.skills || [];
+        
         certificationHTML += `
-        <div class="box" style="animation-delay: ${index * 0.15}s;">
-            <img draggable="false" src="Certifications/images/${certification.image}.png" alt="certification" />
+        <div class="box" style="animation-delay: ${index * 0.15}s;" data-category="${category}">
+            <img draggable="false" src="Certifications/images/${certification.image}.png" alt="${certification.name}" />
             <div class="content">
                 <div class="tag">
                     <h3>${certification.name}</h3>
                 </div>
                 <div class="desc">
+                    <div class="category">${certification.category || 'Technology'}</div>
+                    <div class="provider">${provider}</div>
                     <p>${certification.desc}</p>
+                    ${skills.length > 0 ? `
+                    <div class="skills-tags">
+                        ${skills.slice(0, 3).map(skill => `<span class="skill-tag">${skill}</span>`).join('')}
+                    </div>` : ''}
                     <div class="btns">
                         <a href="${certification.link}" class="btn" target="_blank" rel="noopener noreferrer">
-                            <i class="fas fa-eye"></i> View
+                            <i class="fas fa-eye"></i> View Certificate
                         </a>
                     </div>
                 </div>
