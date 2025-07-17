@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Professional Certifications | Portfolio</title>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/all-certificates.css">
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
+    
+    <!-- Meta Tags for SEO -->
+    <meta name="description" content="Complete collection of professional certifications in cybersecurity, blockchain development, AI/ML, digital marketing, and leadership. View all credentials and achievements.">
+    <meta name="keywords" content="certifications, cybersecurity, blockchain, AI, machine learning, digital marketing, leadership, professional development">
+    <meta name="author" content="Your Name">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="All Professional Certifications | Portfolio">
+    <meta property="og:description" content="Complete collection of professional certifications and achievements">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourwebsite.com/all-certificates.html">
+    <meta property="og:image" content="https://yourwebsite.com/assets/images/certifications-preview.png">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="All Professional Certifications | Portfolio">
+    <meta name="twitter:description" content="Complete collection of professional certifications and achievements">
+    <meta name="twitter:image" content="https://yourwebsite.com/assets/images/certifications-preview.png">
+</head>
+
+<body>
+    <!-- Back to Portfolio Button -->
+    <div class="back-to-portfolio">
+        <a href="index.html" class="back-btn">
+            <i class="fas fa-arrow-left"></i>
+            <span>Back to Portfolio</span>
+        </a>
+    </div>
+
+    <!-- Header Section -->
+    <header class="certificates-header">
+        <div class="header-content">
+            <div class="breadcrumb">
+                <a href="index.html">Portfolio</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>All Certifications</span>
+            </div>
+            
+            <h1 class="page-title">
+                <i class="fas fa-certificate"></i>
+                Professional <span class="highlight">Certifications</span>
+            </h1>
+            
+            <p class="page-subtitle">
+                A comprehensive collection of my professional achievements, certifications, and continuous learning journey across multiple domains including cybersecurity, blockchain technology, artificial intelligence, and leadership development.
+            </p>
+            
+            <div class="header-stats">
+                <div class="stat-card">
+                    <div class="stat-number" id="total-certs">0</div>
+                    <div class="stat-label">Total Certificates</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="total-categories">0</div>
+                    <div class="stat-label">Categories</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="total-hours">0+</div>
+                    <div class="stat-label">Study Hours</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="expert-level">0</div>
+                    <div class="stat-label">Expert Level</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Animated Background -->
+        <div class="header-bg">
+            <div class="floating-cert cert-1"><i class="fas fa-shield-alt"></i></div>
+            <div class="floating-cert cert-2"><i class="fas fa-cubes"></i></div>
+            <div class="floating-cert cert-3"><i class="fas fa-brain"></i></div>
+            <div class="floating-cert cert-4"><i class="fas fa-chart-line"></i></div>
+            <div class="floating-cert cert-5"><i class="fas fa-users"></i></div>
+        </div>
+    </header>
+
+    <!-- Certificates Grid -->
+    <section class="certificates-section">
+        <div class="container">
+            <div class="certificates-grid" id="certificates-grid">
+                <!-- Certificates will be dynamically loaded here -->
+            </div>
+            
+            <!-- Loading State -->
+            <div class="loading-state" id="loading-state">
+                <div class="loader"></div>
+                <p>Loading your certifications...</p>
+            </div>
+            
+            <!-- Empty State -->
+            <div class="empty-state" id="empty-state" style="display: none;">
+                <i class="fas fa-search"></i>
+                <h3>No certificates found</h3>
+                <p>Try adjusting your filters to see more results.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievement Timeline -->
+    <section class="timeline-section">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-timeline"></i>
+                Achievement <span class="highlight">Timeline</span>
+            </h2>
+            
+            <div class="timeline" id="achievement-timeline">
+                <!-- Timeline items will be dynamically generated -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Analysis -->
+    <section class="skills-analysis">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-chart-bar"></i>
+                Skills <span class="highlight">Analysis</span>
+            </h2>
+            
+            <div class="skills-breakdown">
+                <div class="skills-category">
+                    <h3><i class="fas fa-shield-alt"></i> Security & Cybersecurity</h3>
+                    <div class="skills-list" id="security-skills"></div>
+                </div>
+                
+                <div class="skills-category">
+                    <h3><i class="fas fa-cubes"></i> Blockchain & Cryptocurrency</h3>
+                    <div class="skills-list" id="blockchain-skills"></div>
+                </div>
+                
+                <div class="skills-category">
+                    <h3><i class="fas fa-brain"></i> AI & Machine Learning</h3>
+                    <div class="skills-list" id="ai-skills"></div>
+                </div>
+                
+                <div class="skills-category">
+                    <h3><i class="fas fa-chart-line"></i> Marketing & Analytics</h3>
+                    <div class="skills-list" id="marketing-skills"></div>
+                </div>
+                
+                <div class="skills-category">
+                    <h3><i class="fas fa-users"></i> Leadership & Management</h3>
+                    <div class="skills-list" id="leadership-skills"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="certificates-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>Continuous Learning Journey</h3>
+                    <p>These certifications represent my commitment to staying current with industry trends and continuously expanding my expertise across multiple domains.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <a href="index.html" class="footer-link">
+                        <i class="fas fa-home"></i>
+                        Back to Portfolio
+                    </a>
+                    <a href="index.html#contact" class="footer-link">
+                        <i class="fas fa-envelope"></i>
+                        Contact Me
+                    </a>
+                    <a href="index.html#projects" class="footer-link">
+                        <i class="fas fa-code"></i>
+                        View Projects
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Professional Portfolio. All rights reserved. | Certifications verified and up-to-date.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="assets/js/all-certificates.js"></script>
+</body>
+
+</html>

@@ -259,37 +259,128 @@ function showSkills(skills) {
 
 function showCertifications(certifications) {
     let certificationsContainer = document.querySelector("#certifications .box-container");
+    
+    // Show only top 6 certificates on main page (prioritizing by level and relevance)
+    const topCertifications = certifications
+        .sort((a, b) => {
+            // Prioritize by level (Expert > Advanced > Professional > etc.)
+            const levelPriority = { 'expert': 4, 'executive': 4, 'advanced': 3, 'professional': 2, 'foundational': 1 };
+            const aLevel = levelPriority[a.level?.toLowerCase()] || 1;
+            const bLevel = levelPriority[b.level?.toLowerCase()] || 1;
+            if (aLevel !== bLevel) return bLevel - aLevel;
+            
+            // Then by achievement/badge quality
+            if (a.achievement && !b.achievement) return -1;
+            if (!a.achievement && b.achievement) return 1;
+            
+            return 0;
+        })
+        .slice(0, 6);
+    
     let certificationHTML = "";
-    certifications.forEach((certification, index) => {
+    topCertifications.forEach((certification, index) => {
         // Ensure consistent category mapping
         const category = certification.category?.toLowerCase() || 'technology';
         const provider = certification.provider || 'Professional Institution';
         const skills = certification.skills || [];
+        const shortDesc = certification.desc.length > 120 ? 
+            certification.desc.substring(0, 120) + '...' : certification.desc;
         
         certificationHTML += `
-        <div class="box" style="animation-delay: ${index * 0.15}s;" data-category="${category}">
-            <img draggable="false" src="Certifications/images/${certification.image}.png" alt="${certification.name}" />
-            <div class="content">
-                <div class="tag">
-                    <h3>${certification.name}</h3>
+        <div class="box modern-card" style="animation-delay: ${index * 0.15}s;" data-category="${category}">
+            <div class="cert-image-container">
+                <img draggable="false" src="Certifications/images/${certification.image}.png" alt="${certification.name}" />
+                <div class="cert-badge">
+                    <span class="level-badge ${certification.level?.toLowerCase() || 'professional'}">${certification.level || 'Professional'}</span>
+                    ${certification.achievement ? `<span class="achievement-badge">${certification.achievement}</span>` : ''}
                 </div>
-                <div class="desc">
-                    <div class="category">${certification.category || 'Technology'}</div>
-                    <div class="provider">${provider}</div>
-                    <p>${certification.desc}</p>
-                    ${skills.length > 0 ? `
-                    <div class="skills-tags">
-                        ${skills.slice(0, 3).map(skill => `<span class="skill-tag">${skill}</span>`).join('')}
-                    </div>` : ''}
-                    <div class="btns">
-                        <a href="${certification.link}" class="btn" target="_blank" rel="noopener noreferrer">
-                            <i class="fas fa-eye"></i> View Certificate
-                        </a>
+            </div>
+            
+            <div class="cert-preview-content">
+                <div class="cert-header">
+                    <h3 class="cert-title">${certification.name}</h3>
+                    <div class="cert-provider">${provider}</div>
+                </div>
+                
+                <div class="cert-summary">
+                    <p class="cert-description">${shortDesc}</p>
+                    <div class="cert-meta">
+                        <span class="cert-category">${certification.category || 'Technology'}</span>
+                        <span class="cert-duration">${certification.duration || 'Self-paced'}</span>
                     </div>
+                </div>
+                
+                ${skills.length > 0 ? `
+                <div class="skills-preview">
+                    ${skills.slice(0, 4).map(skill => `<span class="skill-tag">${skill}</span>`).join('')}
+                    ${skills.length > 4 ? '<span class="skill-tag more">+' + (skills.length - 4) + ' more</span>' : ''}
+                </div>` : ''}
+            </div>
+            
+            <div class="cert-actions">
+                <a href="${certification.link}" class="btn primary-btn" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-eye"></i> View Certificate
+                </a>
+            </div>
+            
+            <!-- Full content shown on hover -->
+            <div class="cert-hover-content">
+                <div class="cert-full-desc">
+                    <h4>${certification.name}</h4>
+                    <p>${certification.desc}</p>
+                    <div class="cert-details">
+                        <div class="detail-item">
+                            <i class="fas fa-building"></i>
+                            <span>${provider}</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-clock"></i>
+                            <span>${certification.duration || 'Self-paced'}</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-award"></i>
+                            <span>${certification.badge || certification.level || 'Certified'}</span>
+                        </div>
+                    </div>
+                    ${skills.length > 0 ? `
+                    <div class="all-skills">
+                        <h5>Skills Acquired:</h5>
+                        <div class="skills-list">
+                            ${skills.map(skill => `<span class="skill-chip">${skill}</span>`).join('')}
+                        </div>
+                    </div>` : ''}
                 </div>
             </div>
         </div>`
     });
+    
+    // Add "View All Certificates" button
+    certificationHTML += `
+    <div class="view-all-certs-container">
+        <div class="view-all-card">
+            <div class="view-all-content">
+                <div class="view-all-icon">
+                    <i class="fas fa-plus-circle"></i>
+                </div>
+                <h3>Explore All Certifications</h3>
+                <p>View my complete collection of ${certifications.length} professional certifications and achievements</p>
+                <div class="cert-stats">
+                    <div class="stat">
+                        <span class="number">${certifications.length}</span>
+                        <span class="label">Total Certificates</span>
+                    </div>
+                    <div class="stat">
+                        <span class="number">${new Set(certifications.map(c => c.category)).size}</span>
+                        <span class="label">Categories</span>
+                    </div>
+                </div>
+                <a href="all-certificates.html" class="btn secondary-btn">
+                    <i class="fas fa-arrow-right"></i> View All Certificates
+                </a>
+            </div>
+        </div>
+    </div>`;
+    
     certificationsContainer.innerHTML = certificationHTML;
     
 
