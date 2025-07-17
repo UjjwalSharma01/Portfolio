@@ -19,27 +19,36 @@ export const AboutSection = ({ id }: { id: string }) => {
             <section className="container" id={id}>
                 <SectionHeader
                     heading1="About Me"
-                    heading2="A Glimpse Into My World"
-                    paragraph="Learn more about who I am, what I do, and what inspires me."
+                    heading2="Building Solutions That Matter"
+                    paragraph="Final-year CS student passionate about creating technology that solves real-world problems and makes a meaningful impact."
                 />
                 <div className="mt-20 flex flex-col gap-8">
                     <div className="grid gap-8 grid-cols-1 md:grid-cols-5 lg:grid-cols-3">
-                        <Card className="h-[320px] md:col-span-2 lg:col-span-1">
+                        <Card className="h-[370px] md:col-span-2 lg:col-span-1">
                             <CardHeader
-                                heading="My Reads"
-                                description="Explore the book shaping my perspectives."
+                                heading="Key Achievements"
+                                description="Top 0.3% in NCAT • 2nd rank in blockchain assessment • Leading 45+ member team"
                                 className="md:py-2.5 md:px-4 lg:px-4 lg:py-1.5"
                             />
-                            <Image
-                                src={bookImage}
-                                alt="Book Cover Image"
-                                className="w-40 mx-auto mt-6 md:mt-3 lg:pt-1 rounded-xl"
-                            />
+                            <div className="flex flex-col gap-4 mt-6 px-6">
+                                <div className="space-y-1">
+                                    <div className="text-white font-bold text-base">🏆 Top 0.3% in NCAT</div>
+                                    <div className="text-white/70 text-xs">Ranked 1323/450,000+ candidates</div>
+                                </div>
+                                <div className="space-y-1">
+                                    <div className="text-white font-bold text-base">🥈 Technical Excellence</div>
+                                    <div className="text-white/70 text-xs">2nd rank among 1000+ developers</div>
+                                </div>
+                                <div className="space-y-1">
+                                    <div className="text-white font-bold text-base">👨‍💼 Team Leadership</div>
+                                    <div className="text-white/70 text-xs">Secretary, E-Cell (45+ members)</div>
+                                </div>
+                            </div>
                         </Card>
-                        <Card className="h-[320px] p-0 md:col-span-3 lg:col-span-2">
+                        <Card className="h-[370px] p-0 md:col-span-3 lg:col-span-2">
                             <CardHeader
-                                heading="My Toolbox"
-                                description="Explore the technologies and tools I use to craft exceptional digital experiences."
+                                heading="My Technical Journey"
+                                description="Full-stack developer with team leadership experience and active open-source contributions."
                                 className="p-6 pb-0 lg:-mt-0.5"
                             />
                             <ToolboxItemsRow
@@ -55,10 +64,10 @@ export const AboutSection = ({ id }: { id: string }) => {
                         </Card>
                     </div>
                     <div className="grid gap-8 grid-cols-1 md:grid-cols-5 lg:grid-cols-6">
-                        <Card className="h-[320px] p-0 flex flex-col md:col-span-3 lg:col-span-4 lg:-mt-0.5">
+                        <Card className="h-[370px] p-0 flex flex-col md:col-span-3 lg:col-span-4 lg:-mt-0.5">
                             <CardHeader
                                 heading="Beyond the Code"
-                                description="Explore my interests and hobbies beyond the digital realm."
+                                description="CS student (8.7 CGPA) exploring emerging tech and contributing to communities."
                                 className="p-6 md:pb-8"
                             />
                             <div className="relative z-0 flex-1 lg:-mt-1" ref={constraintRef}>
@@ -79,7 +88,7 @@ export const AboutSection = ({ id }: { id: string }) => {
                                 ))}
                             </div>
                         </Card>
-                        <Card className="h-[320px] p-0 relative md:col-span-2 lg:col-span-2">
+                        <Card className="h-[370px] p-0 relative md:col-span-2 lg:col-span-2">
                             <Image
                                 src={mapImage}
                                 alt="Map Image"
