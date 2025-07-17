@@ -8,10 +8,11 @@ import { HeroSection } from "@/sections/Hero";
 import { ProjectsSection } from "@/sections/Projects";
 import { TapeSection } from "@/sections/Tape";
 import { useState } from "react";
+
 export default function Home() {
     const [activeSectionId, setActiveSectionId] = useState<string>(heroSectionId);
     return (
-        <>
+        <main>
             <Header activeSectionId={activeSectionId} setActiveSectionId={setActiveSectionId} />
             <HeroSection id={heroSectionId} />
             <ProjectsSection id={projectsSectionId} />
@@ -19,6 +20,6 @@ export default function Home() {
             <AboutSection id={aboutSectionId} />
             <ContactSection id={contactSectionId} />
             <Footer />
-        </>
+        </main>
     );
 }
