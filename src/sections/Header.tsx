@@ -121,26 +121,53 @@ export const Header = ({
     );
 
     return (
-        <div className="flex justify-center items-center fixed top-3 w-full z-10">
-            <nav className="flex gap-3 p-0.5 border border-white/30 rounded-full bg-white/10 backdrop-blur">
-                {sectionIds.map((sectionId) => {
-                    const labels: Record<string, string> = {
-                        [heroSectionId]: "Home",
-                        [projectsSectionId]: "Projects",
-                        [aboutSectionId]: "About",
-                    };
+        <>
+            {/* Centered Navigation */}
+            <div className="flex justify-center items-center fixed top-3 w-full z-10">
+                <nav className="flex gap-3 p-0.5 border border-white/30 rounded-full bg-white/10 backdrop-blur">
+                    {sectionIds.map((sectionId) => {
+                        const labels: Record<string, string> = {
+                            [heroSectionId]: "Home",
+                            [projectsSectionId]: "Projects",
+                            [aboutSectionId]: "About",
+                        };
 
-                    return (
-                        <a
-                            key={sectionId}
-                            href={`#${sectionId}`}
-                            className={twMerge("nav-item", activeSectionId === sectionId && "nav-highlighted")}
-                            onClick={handleClick}>
-                            {labels[sectionId]}
-                        </a>
-                    );
-                })}
-            </nav>
-        </div>
+                        return (
+                            <a
+                                key={sectionId}
+                                href={`#${sectionId}`}
+                                className={twMerge("nav-item", activeSectionId === sectionId && "nav-highlighted")}
+                                onClick={handleClick}>
+                                {labels[sectionId]}
+                            </a>
+                        );
+                    })}
+                    
+                    {/* Resume button - only visible on mobile, inside navbar */}
+                    <a
+                        href="https://ggl.link/ujjwalresume"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="md:hidden"
+                    >
+                        <div className="px-4 py-2 rounded-full text-sm font-bold bg-gradient-to-r from-emerald-400 to-sky-400 text-gray-950 hover:from-emerald-300 hover:to-sky-300 transition-all duration-200">
+                            Resume
+                        </div>
+                    </a>
+                </nav>
+            </div>
+            
+            {/* Resume Button - Desktop only, fixed right */}
+            <div className="hidden md:block fixed top-3 right-6 z-10">
+                <a
+                    href="https://ggl.link/ujjwalresume"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="nav-item bg-gradient-to-r from-emerald-400 to-sky-400 text-gray-950 hover:from-emerald-300 hover:to-sky-300"
+                >
+                    Resume
+                </a>
+            </div>
+        </>
     );
 };
