@@ -61,6 +61,21 @@ export const ProjectsSection = ({ id }: { id: string }) => {
                         </Card>
                     ))}
                 </div>
+                <div className="flex justify-center mt-12">
+                    <a
+                        href="https://github.com/UjjwalSharma01"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-block w-full md:w-auto"
+                    >
+                        <button
+                            className="bg-gradient-to-r from-emerald-300 to-sky-400 text-gray-950 font-bold rounded-xl px-8 py-3 shadow-lg hover:scale-105 transition-transform duration-200 text-lg md:text-xl"
+                            style={{ minWidth: 200 }}
+                        >
+                            View All Projects
+                        </button>
+                    </a>
+                </div>
             </div>
         </section>
     );
