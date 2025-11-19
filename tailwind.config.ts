@@ -21,6 +21,13 @@ const config: Config = {
             },
         },
         extend: {
+            colors: {
+                "dark-bg": "#09090b", // Zinc 950
+                "card-bg": "#18181b", // Zinc 900
+                "primary-text": "#f4f4f5", // Zinc 100
+                "muted-text": "#a1a1aa", // Zinc 400
+                "accent": "#a78bfa", // Soft Violet
+            },
             fontFamily: {
                 sans: "var(--font-sans)",
                 serif: "var(--font-serif)",

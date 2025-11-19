@@ -74,7 +74,7 @@ export const AboutSection = ({ id }: { id: string }) => {
                                 {hobbies.map((hobby) => (
                                     <motion.div
                                         key={hobby.title}
-                                        className="inline-flex items-center gap-1.5 px-6 py-1.5 bg-gradient-to-r from-emerald-300 to-sky-400 rounded-full absolute"
+                                        className="inline-flex items-center gap-1.5 px-6 py-1.5 bg-gradient-to-r from-accent to-violet-400 rounded-full absolute"
                                         style={{
                                             left: hobby.left,
                                             top: hobby.top,
@@ -96,9 +96,9 @@ export const AboutSection = ({ id }: { id: string }) => {
                                 loading="lazy"
                             />
                             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-20 rounded-full after:content-[''] after:absolute after:inset-0 after:outline after:outline-2 after:-outline-offset-2 after:rounded-full after:outline-gray-950/30">
-                                <div className="absolute inset-0 -z-10 bg-gradient-to-r from-emerald-300 to-sky-400 rounded-full animate-ping [animation-duration:2s]"></div>
-                                <div className="absolute inset-0 -z-10 bg-gradient-to-r from-emerald-300 to-sky-400 rounded-full"></div>
-                                <Image 
+                                <div className="absolute inset-0 -z-10 bg-gradient-to-r from-accent to-violet-400 rounded-full animate-ping [animation-duration:2s]"></div>
+                                <div className="absolute inset-0 -z-10 bg-gradient-to-r from-accent to-violet-400 rounded-full"></div>
+                                <Image
                                     src="/images/pic.jpg"
                                     alt="Ujjwal Sharma profile photo"
                                     width={80}

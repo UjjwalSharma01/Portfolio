@@ -124,7 +124,7 @@ export const Header = ({
         <>
             {/* Centered Navigation */}
             <div className="flex justify-center items-center fixed top-3 w-full z-10">
-                <nav className="flex gap-3 p-0.5 border border-white/30 rounded-full bg-white/10 backdrop-blur">
+                <nav className="flex gap-2 p-1 border border-white/15 rounded-full bg-white/10 backdrop-blur-md">
                     {sectionIds.map((sectionId) => {
                         const labels: Record<string, string> = {
                             [heroSectionId]: "Home",
@@ -136,13 +136,16 @@ export const Header = ({
                             <a
                                 key={sectionId}
                                 href={`#${sectionId}`}
-                                className={twMerge("nav-item", activeSectionId === sectionId && "nav-highlighted")}
+                                className={twMerge(
+                                    "px-4 py-1.5 rounded-full text-white/70 text-sm font-semibold hover:bg-white/10 hover:text-white transition-colors duration-200",
+                                    activeSectionId === sectionId && "bg-white/10 text-white hover:bg-white/20"
+                                )}
                                 onClick={handleClick}>
                                 {labels[sectionId]}
                             </a>
                         );
                     })}
-                    
+
                     {/* Resume button - only visible on mobile, inside navbar */}
                     <a
                         href="https://ggl.link/ujjwalresume"
@@ -150,20 +153,20 @@ export const Header = ({
                         rel="noopener noreferrer"
                         className="md:hidden"
                     >
-                        <div className="px-4 py-2 rounded-full text-sm font-bold bg-gradient-to-r from-emerald-400 to-sky-400 text-gray-950 hover:from-emerald-300 hover:to-sky-300 transition-all duration-200">
+                        <div className="px-4 py-2 rounded-full text-sm font-bold bg-white text-gray-950 hover:bg-white/90 transition-all duration-200">
                             Resume
                         </div>
                     </a>
                 </nav>
             </div>
-            
+
             {/* Resume Button - Desktop only, fixed right */}
             <div className="hidden md:block fixed top-3 right-6 z-10">
                 <a
                     href="https://ggl.link/ujjwalresume"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="nav-item bg-gradient-to-r from-emerald-400 to-sky-400 text-gray-950 hover:from-emerald-300 hover:to-sky-300"
+                    className="inline-flex items-center justify-center px-5 py-2 rounded-full text-sm font-bold bg-white text-gray-950 hover:bg-white/90 transition-all duration-200"
                 >
                     Resume
                 </a>
