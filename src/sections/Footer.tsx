@@ -1,4 +1,5 @@
 import ArrowUpRightIcon from "@/assets/icons/arrow-up-right.svg";
+import { Magnetic } from "@/components/Magnetic";
 
 const footerLinks = [
     {
@@ -33,8 +34,12 @@ export const Footer = () => {
                                 key={link.title}
                                 target="_blank"
                                 className="inline-flex items-center gap-1.5 text-white/70 hover:text-white transition-colors duration-200 font-medium">
-                                <span className="font-semibold">{link.title}</span>
-                                <ArrowUpRightIcon className="size-4" />
+                                <Magnetic>
+                                    <span className="font-semibold inline-flex items-center gap-1.5">
+                                        {link.title}
+                                        <ArrowUpRightIcon className="size-4" />
+                                    </span>
+                                </Magnetic>
                             </a>
                         ))}
                     </nav>

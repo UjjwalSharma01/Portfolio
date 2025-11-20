@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Calistoga } from "next/font/google";
 import "./globals.css";
 import { twMerge } from "tailwind-merge";
+import { GrainOverlay } from "@/components/GrainOverlay";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 const calistoga = Calistoga({ subsets: ["latin"], variable: "--font-serif", weight: ["400"] });
@@ -136,6 +137,7 @@ export default function RootLayout({
                     calistoga.variable,
                     "bg-dark-bg text-primary-text font-sans antialiased"
                 )}>
+                <GrainOverlay />
                 {children}
             </body>
         </html>

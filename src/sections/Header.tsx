@@ -1,6 +1,7 @@
 import { Dispatch, MouseEvent, SetStateAction, useEffect, useCallback, useMemo, useRef } from "react";
 import { aboutSectionId, heroSectionId, projectsSectionId } from "./constants";
 import { twMerge } from "tailwind-merge";
+import { motion } from "framer-motion";
 
 export const Header = ({
     activeSectionId,
@@ -137,11 +138,23 @@ export const Header = ({
                                 key={sectionId}
                                 href={`#${sectionId}`}
                                 className={twMerge(
-                                    "px-4 py-1.5 rounded-full text-white/70 text-sm font-semibold hover:bg-white/10 hover:text-white transition-colors duration-200",
-                                    activeSectionId === sectionId && "bg-white/10 text-white hover:bg-white/20"
+                                    "px-4 py-1.5 rounded-full text-white/70 text-sm font-semibold hover:text-white transition-colors duration-200 relative"
                                 )}
                                 onClick={handleClick}>
-                                {labels[sectionId]}
+                                {activeSectionId === sectionId && (
+                                    <motion.div
+                                        layoutId="activeSection"
+                                        className="absolute inset-0 bg-white/10 rounded-full -z-10"
+                                        transition={{
+                                            type: "spring",
+                                            stiffness: 380,
+                                            damping: 30,
+                                        }}
+                                    />
+                                )}
+                                <span className={twMerge(activeSectionId === sectionId && "text-white")}>
+                                    {labels[sectionId]}
+                                </span>
                             </a>
                         );
                     })}

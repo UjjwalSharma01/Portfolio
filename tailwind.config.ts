@@ -32,11 +32,6 @@ const config: Config = {
                 sans: "var(--font-sans)",
                 serif: "var(--font-serif)",
             },
-            animation: {
-                "ping-large": "ping-large 1s ease-in-out infinite",
-                "scroll-left": "scroll-left 1s linear infinite",
-                "scroll-right": "scroll-right 1s linear infinite",
-            },
             keyframes: {
                 "ping-large": {
                     "75%, 100%": {
@@ -60,6 +55,20 @@ const config: Config = {
                         transform: "translateX(0%)",
                     },
                 },
+                "shimmer": {
+                    "0%": {
+                        backgroundPosition: "0 0"
+                    },
+                    "100%": {
+                        backgroundPosition: "-200% 0"
+                    }
+                }
+            },
+            animation: {
+                "ping-large": "ping-large 1s ease-in-out infinite",
+                "scroll-left": "scroll-left 1s linear infinite",
+                "scroll-right": "scroll-right 1s linear infinite",
+                "shimmer": "shimmer 2s linear infinite",
             },
         },
     },

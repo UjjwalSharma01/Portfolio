@@ -7,6 +7,7 @@ import { Card } from "@/components/Card";
 import { portfolioProjects } from "../../profile.config";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import { twMerge } from "tailwind-merge";
 
 export const ProjectsSection = ({ id }: { id: string }) => {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -32,7 +33,10 @@ export const ProjectsSection = ({ id }: { id: string }) => {
                         return (
                             <Card
                                 key={project.title}
-                                className="px-8 pt-8 pb-0 md:pt-12 md:px-10 lg:px-20 lg:pt-16 sticky top-16 md:top-20"
+                                className={twMerge(
+                                    "px-8 pt-8 pb-0 md:pt-12 md:px-10 lg:px-20 lg:pt-16 sticky top-16 md:top-20",
+                                    index > 0 && "bg-zinc-900 backdrop-blur-none"
+                                )}
                                 style={{
                                     scale,
                                     top: `calc(64px + ${index * 40}px)`,
