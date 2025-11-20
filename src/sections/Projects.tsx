@@ -22,6 +22,7 @@ const ProjectCard = ({ project, index, totalProjects, scrollYProgress }: Project
 
     return (
         <motion.div
+            className="sticky"
             style={{
                 scale,
                 top: `calc(64px + ${index * 40}px)`,
@@ -29,7 +30,7 @@ const ProjectCard = ({ project, index, totalProjects, scrollYProgress }: Project
         >
             <Card
                 className={twMerge(
-                    "px-8 pt-8 pb-0 md:pt-12 md:px-10 lg:px-20 lg:pt-16 sticky top-16 md:top-20",
+                    "px-8 pt-8 pb-0 md:pt-12 md:px-10 lg:px-20 lg:pt-16",
                     index > 0 && "bg-zinc-900 backdrop-blur-none"
                 )}>
                 <div className="lg:grid lg:grid-cols-2 lg:gap-16">
