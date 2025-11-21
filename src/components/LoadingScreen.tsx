@@ -1,8 +1,25 @@
 import { useEffect, useRef, useState } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { OrbitControls, Sphere, Stars } from "@react-three/drei";
 import * as THREE from "three";
 import grainImage from "@/assets/images/grain.jpg";
+
+const ResponsiveCamera = () => {
+    const { camera, size } = useThree();
+    
+    useEffect(() => {
+        const aspect = size.width / size.height;
+        // If portrait mode (mobile), move camera back to fit the rings
+        if (aspect < 1) {
+            camera.position.z = 16;
+        } else {
+            camera.position.z = 10;
+        }
+        camera.updateProjectionMatrix();
+    }, [size, camera]);
+
+    return null;
+};
 
 const RotatingRing = ({ radius, speed, axis, color, isExploding }: { radius: number; speed: number; axis: 'x' | 'y' | 'z'; color: string; isExploding: boolean }) => {
     const ref = useRef<THREE.Mesh>(null);
@@ -112,7 +129,7 @@ const DigitalCore = ({ onLoaded, progress }: { onLoaded: () => void; progress: n
             <RotatingRing radius={3.8} speed={0.2} axis="z" color="#c4b5fd" isExploding={isExploding} />
 
             {/* Background Particles - Subtle Data Field */}
-            <Stars radius={100} depth={50} count={5000} factor={2} saturation={0} fade speed={1} />
+            <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1} />
         </group>
     );
 };
@@ -145,6 +162,7 @@ export const LoadingScreen = ({ onFinished }: { onFinished: () => void }) => {
 
             <div className="absolute inset-0 z-10 overflow-hidden">
                 <Canvas camera={{ position: [0, 0, 10], fov: 45 }}>
+                    <ResponsiveCamera />
                     <ambientLight intensity={0.5} />
                     <pointLight position={[10, 10, 10]} intensity={1} />
                     <pointLight position={[-10, -10, -10]} intensity={0.5} color="#a78bfa" />
