@@ -2,6 +2,7 @@ import { Dispatch, MouseEvent, SetStateAction, useEffect, useCallback, useMemo, 
 import { aboutSectionId, contactSectionId, heroSectionId, projectsSectionId } from "./constants";
 import { twMerge } from "tailwind-merge";
 import { motion } from "framer-motion";
+import ArrowUpRightIcon from "@/assets/icons/arrow-up-right.svg";
 
 export const Header = ({
     activeSectionId,
@@ -149,10 +150,12 @@ export const Header = ({
                             <a
                                 key={sectionId}
                                 href={`#${sectionId}`}
+                                onClick={handleClick}
+                                aria-current={activeSectionId === sectionId ? "page" : undefined}
                                 className={twMerge(
-                                    "px-4 py-1.5 rounded-full text-white/70 text-sm font-semibold hover:text-white transition-colors duration-200 relative outline-none focus-visible:ring-2 focus-visible:ring-white/50"
-                                )}
-                                onClick={handleClick}>
+                                    "px-3 md:px-4 py-1.5 rounded-full text-white/70 text-sm font-semibold hover:text-white transition-colors duration-200 relative outline-none focus-visible:ring-2 focus-visible:ring-white/50",
+                                    sectionId === heroSectionId && "hidden md:inline-flex"
+                                )}>
                                 {activeSectionId === sectionId && (
                                     <motion.div
                                         layoutId="activeSection"
@@ -178,8 +181,9 @@ export const Header = ({
                         rel="noopener noreferrer"
                         className="md:hidden"
                     >
-                        <div className="px-4 py-1.5 rounded-full text-sm font-bold bg-white text-gray-950 hover:bg-white/90 transition-all duration-200">
-                            Resume
+                        <div className="px-3 py-1.5 rounded-full text-sm font-semibold bg-white text-gray-950 hover:bg-gray-100 active:scale-95 transition-all duration-300 flex items-center gap-1 group">
+                            <span className="tracking-tight">Resume</span>
+                            <ArrowUpRightIcon className="size-4 stroke-2 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                         </div>
                     </a>
                 </nav>
@@ -191,9 +195,10 @@ export const Header = ({
                     href="https://ggl.link/ujjwalresume"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center px-5 py-2 rounded-full text-sm font-bold bg-white text-gray-950 hover:bg-white/90 transition-all duration-200"
+                    className="inline-flex items-center justify-center px-5 py-2 rounded-full text-sm font-semibold bg-white text-gray-950 hover:bg-gray-100 active:scale-95 transition-all duration-300 gap-2 group shadow-[0_2px_12px_rgba(0,0,0,0.2)]"
                 >
-                    Resume
+                    <span className="tracking-tight">Resume</span>
+                    <ArrowUpRightIcon className="size-4 stroke-2 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </a>
             </div>
         </>
