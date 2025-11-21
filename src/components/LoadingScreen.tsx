@@ -1,53 +1,119 @@
 import { useEffect, useRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
+import { OrbitControls, Sphere, Stars } from "@react-three/drei";
 import * as THREE from "three";
-import { motion } from "framer-motion";
 import grainImage from "@/assets/images/grain.jpg";
 
-const DigitalCore = ({ onLoaded, progress }: { onLoaded: () => void; progress: number }) => {
-    const meshRef = useRef<THREE.Mesh>(null);
-    const [isExploding, setIsExploding] = useState(false);
+const RotatingRing = ({ radius, speed, axis, color, isExploding }: { radius: number; speed: number; axis: 'x' | 'y' | 'z'; color: string; isExploding: boolean }) => {
+    const ref = useRef<THREE.Mesh>(null);
 
     useFrame((state, delta) => {
-        if (meshRef.current) {
-            // Spin logic
-            const speed = isExploding ? 10 : 1 + (progress / 100) * 2;
-            meshRef.current.rotation.x += delta * speed * 0.2;
-            meshRef.current.rotation.y += delta * speed * 0.2;
+        if (ref.current) {
+            // Rotation
+            if (axis === 'x') ref.current.rotation.x += delta * speed;
+            if (axis === 'y') ref.current.rotation.y += delta * speed;
+            if (axis === 'z') ref.current.rotation.z += delta * speed;
 
-            // Explode/Implode logic
+            // Explosion expansion
             if (isExploding) {
-                meshRef.current.scale.lerp(new THREE.Vector3(0, 0, 0), delta * 5);
-                if (meshRef.current.scale.x < 0.01) {
-                    onLoaded();
+                ref.current.scale.lerp(new THREE.Vector3(20, 20, 20), delta * 2);
+                if (ref.current.material instanceof THREE.Material) {
+                    ref.current.material.opacity = THREE.MathUtils.lerp(ref.current.material.opacity, 0, delta * 5);
                 }
             }
         }
     });
 
-    useEffect(() => {
-        if (progress >= 100 && !isExploding) {
-            // Add a small delay before exploding to let the user see the 100% state
-            const timeout = setTimeout(() => {
-                setIsExploding(true);
-            }, 500);
-            return () => clearTimeout(timeout);
-        }
-    }, [progress, isExploding]);
-
     return (
-        <mesh ref={meshRef} scale={[1.5, 1.5, 1.5]}>
-            <icosahedronGeometry args={[1, 1]} />
-            <meshPhysicalMaterial
-                color={new THREE.Color("#a78bfa")} // Accent: Soft Violet
-                emissive={new THREE.Color("#a78bfa")}
-                emissiveIntensity={isExploding ? 20 : 2 + (progress / 100) * 5} // High intensity for "fake" bloom
-                roughness={0.2}
-                metalness={0.8}
-                wireframe={true}
+        <mesh ref={ref}>
+            <torusGeometry args={[radius, 0.03, 32, 100]} />
+            <meshStandardMaterial 
+                color={color} 
+                emissive={color}
+                emissiveIntensity={0.5}
+                transparent 
+                opacity={0.4} 
+                side={THREE.DoubleSide} 
             />
         </mesh>
+    );
+};
+
+const CoreGeometry = ({ isExploding, progress }: { isExploding: boolean; progress: number }) => {
+    const meshRef = useRef<THREE.Mesh>(null);
+
+    useFrame((state, delta) => {
+        if (meshRef.current) {
+            // Complex spin
+            meshRef.current.rotation.x += delta * 0.5;
+            meshRef.current.rotation.y += delta * 0.8;
+
+            // Pulse effect based on progress
+            const pulse = 1 + Math.sin(state.clock.elapsedTime * 4) * 0.05;
+            
+            if (isExploding) {
+                // Warp jump effect: Scale up massively and fade out
+                meshRef.current.scale.lerp(new THREE.Vector3(30, 30, 30), delta * 3);
+                // Opacity fade handled in material prop if possible, or via ref
+            } else {
+                const baseScale = 1.5;
+                meshRef.current.scale.set(baseScale * pulse, baseScale * pulse, baseScale * pulse);
+            }
+        }
+    });
+
+    return (
+        <group>
+            {/* Inner Solid Core */}
+            <mesh ref={meshRef}>
+                <icosahedronGeometry args={[1, 2]} />
+                <meshPhysicalMaterial
+                    color="#a78bfa"
+                    emissive="#7c3aed"
+                    emissiveIntensity={isExploding ? 5 : 0.5 + (progress / 100) * 1.5}
+                    roughness={0.1}
+                    metalness={0.9}
+                    wireframe={true}
+                    transparent
+                    opacity={isExploding ? 0 : 0.8}
+                />
+            </mesh>
+            
+            {/* Inner Glow Sphere */}
+            <mesh scale={isExploding ? [30,30,30] : [0.8, 0.8, 0.8]}>
+                <sphereGeometry args={[1, 32, 32]} />
+                <meshBasicMaterial color="#a78bfa" transparent opacity={isExploding ? 0 : 0.1} />
+            </mesh>
+        </group>
+    );
+};
+
+const DigitalCore = ({ onLoaded, progress }: { onLoaded: () => void; progress: number }) => {
+    const [isExploding, setIsExploding] = useState(false);
+
+    useEffect(() => {
+        if (progress >= 100 && !isExploding) {
+            const timeout = setTimeout(() => {
+                setIsExploding(true);
+                // Trigger finish after the visual explosion
+                setTimeout(onLoaded, 800);
+            }, 200);
+            return () => clearTimeout(timeout);
+        }
+    }, [progress, isExploding, onLoaded]);
+
+    return (
+        <group>
+            <CoreGeometry isExploding={isExploding} progress={progress} />
+            
+            {/* Orbital Rings representing data streams or electron shells */}
+            <RotatingRing radius={2.5} speed={0.4} axis="x" color="#a78bfa" isExploding={isExploding} />
+            <RotatingRing radius={3.2} speed={0.3} axis="y" color="#8b5cf6" isExploding={isExploding} />
+            <RotatingRing radius={3.8} speed={0.2} axis="z" color="#c4b5fd" isExploding={isExploding} />
+
+            {/* Background Particles - Subtle Data Field */}
+            <Stars radius={100} depth={50} count={5000} factor={2} saturation={0} fade speed={1} />
+        </group>
     );
 };
 
@@ -77,12 +143,13 @@ export const LoadingScreen = ({ onFinished }: { onFinished: () => void }) => {
                 }}
             ></div>
 
-            <div className="w-full h-full max-w-md max-h-md aspect-square relative z-10">
-                <Canvas camera={{ position: [0, 0, 5] }}>
+            <div className="absolute inset-0 z-10 overflow-hidden">
+                <Canvas camera={{ position: [0, 0, 10], fov: 45 }}>
                     <ambientLight intensity={0.5} />
                     <pointLight position={[10, 10, 10]} intensity={1} />
+                    <pointLight position={[-10, -10, -10]} intensity={0.5} color="#a78bfa" />
                     <DigitalCore onLoaded={onFinished} progress={progress} />
-                    <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={2} />
+                    <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={0.5} />
                 </Canvas>
             </div>
 
