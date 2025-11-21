@@ -1,5 +1,5 @@
 import { Dispatch, MouseEvent, SetStateAction, useEffect, useCallback, useMemo, useRef } from "react";
-import { aboutSectionId, heroSectionId, projectsSectionId } from "./constants";
+import { aboutSectionId, contactSectionId, heroSectionId, projectsSectionId } from "./constants";
 import { twMerge } from "tailwind-merge";
 import { motion } from "framer-motion";
 
@@ -17,7 +17,7 @@ export const Header = ({
     const clickTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
     // Memoize the section ids array to avoid recreating it on each render
-    const sectionIds = useMemo(() => [heroSectionId, projectsSectionId, aboutSectionId], []);
+    const sectionIds = useMemo(() => [heroSectionId, projectsSectionId, aboutSectionId, contactSectionId], []);
 
     const scrollToSection = useCallback(
         (sectionId: string) => {
@@ -62,6 +62,17 @@ export const Header = ({
         const handleScroll = () => {
             // Skip scroll detection if a navigation link was recently clicked
             if (recentlyClicked.current) return;
+
+            // Check if we've reached the bottom of the page (for Contact section)
+            const isAtBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 50;
+            if (isAtBottom) {
+                const lastSectionId = sectionIds[sectionIds.length - 1];
+                if (activeSectionId !== lastSectionId) {
+                    setActiveSectionId(lastSectionId);
+                    window.history.replaceState(null, "", `#${lastSectionId}`);
+                }
+                return;
+            }
 
             const scrollPosition = window.scrollY + 150;
             const sections = sectionIds
@@ -131,6 +142,7 @@ export const Header = ({
                             [heroSectionId]: "Home",
                             [projectsSectionId]: "Projects",
                             [aboutSectionId]: "About",
+                            [contactSectionId]: "Contact",
                         };
 
                         return (
