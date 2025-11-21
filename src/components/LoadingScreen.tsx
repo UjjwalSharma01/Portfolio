@@ -136,8 +136,11 @@ const DigitalCore = ({ onLoaded, progress }: { onLoaded: () => void; progress: n
 
 export const LoadingScreen = ({ onFinished }: { onFinished: () => void }) => {
     const [progress, setProgress] = useState(0);
+    const [isCanvasReady, setIsCanvasReady] = useState(false);
 
     useEffect(() => {
+        if (!isCanvasReady) return;
+
         const interval = setInterval(() => {
             setProgress((prev) => {
                 if (prev >= 100) {
@@ -149,7 +152,7 @@ export const LoadingScreen = ({ onFinished }: { onFinished: () => void }) => {
         }, 20);
 
         return () => clearInterval(interval);
-    }, []);
+    }, [isCanvasReady]);
 
     return (
         <div className="fixed inset-0 z-50 bg-[#09090b] flex items-center justify-center transition-opacity duration-1000">
@@ -160,8 +163,11 @@ export const LoadingScreen = ({ onFinished }: { onFinished: () => void }) => {
                 }}
             ></div>
 
-            <div className="absolute inset-0 z-10 overflow-hidden">
-                <Canvas camera={{ position: [0, 0, 10], fov: 45 }}>
+            <div className={`absolute inset-0 z-10 overflow-hidden transition-opacity duration-700 ${isCanvasReady ? 'opacity-100' : 'opacity-0'}`}>
+                <Canvas 
+                    camera={{ position: [0, 0, 10], fov: 45 }}
+                    onCreated={() => setIsCanvasReady(true)}
+                >
                     <ResponsiveCamera />
                     <ambientLight intensity={0.5} />
                     <pointLight position={[10, 10, 10]} intensity={1} />
@@ -171,7 +177,7 @@ export const LoadingScreen = ({ onFinished }: { onFinished: () => void }) => {
                 </Canvas>
             </div>
 
-            <div className="absolute bottom-12 left-0 w-full text-center text-[#a78bfa]/80 font-mono text-sm tracking-widest animate-pulse z-10">
+            <div className={`absolute bottom-12 left-0 w-full text-center text-[#a78bfa]/80 font-mono text-sm tracking-widest animate-pulse z-10 transition-opacity duration-700 ${isCanvasReady ? 'opacity-100' : 'opacity-0'}`}>
                 INITIALIZING SYSTEM... {progress}%
             </div>
         </div>
