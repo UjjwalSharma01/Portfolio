@@ -135,8 +135,8 @@ export const Header = ({
     return (
         <>
             {/* Centered Navigation */}
-            <div className="flex justify-center items-center fixed top-3 w-full z-10">
-                <nav className="flex gap-2 p-1 border border-white/15 rounded-full bg-white/10 backdrop-blur-md">
+            <div className="flex justify-center items-center fixed top-3 w-full z-50">
+                <nav className="flex gap-1 p-0.5 border border-white/15 rounded-full bg-white/10 backdrop-blur-md">
                     {sectionIds.map((sectionId) => {
                         const labels: Record<string, string> = {
                             [heroSectionId]: "Home",
@@ -150,7 +150,7 @@ export const Header = ({
                                 key={sectionId}
                                 href={`#${sectionId}`}
                                 className={twMerge(
-                                    "px-4 py-1.5 rounded-full text-white/70 text-sm font-semibold hover:text-white transition-colors duration-200 relative"
+                                    "px-4 py-1.5 rounded-full text-white/70 text-sm font-semibold hover:text-white transition-colors duration-200 relative outline-none focus-visible:ring-2 focus-visible:ring-white/50"
                                 )}
                                 onClick={handleClick}>
                                 {activeSectionId === sectionId && (
@@ -178,7 +178,7 @@ export const Header = ({
                         rel="noopener noreferrer"
                         className="md:hidden"
                     >
-                        <div className="px-4 py-2 rounded-full text-sm font-bold bg-white text-gray-950 hover:bg-white/90 transition-all duration-200">
+                        <div className="px-4 py-1.5 rounded-full text-sm font-bold bg-white text-gray-950 hover:bg-white/90 transition-all duration-200">
                             Resume
                         </div>
                     </a>
@@ -186,7 +186,7 @@ export const Header = ({
             </div>
 
             {/* Resume Button - Desktop only, fixed right */}
-            <div className="hidden md:block fixed top-3 right-6 z-10">
+            <div className="hidden md:block fixed top-3 right-6 z-50">
                 <a
                     href="https://ggl.link/ujjwalresume"
                     target="_blank"
