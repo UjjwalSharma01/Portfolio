@@ -42,7 +42,7 @@ const DigitalCore = ({ onLoaded, progress }: { onLoaded: () => void; progress: n
             <meshPhysicalMaterial
                 color={new THREE.Color("#a78bfa")} // Accent: Soft Violet
                 emissive={new THREE.Color("#a78bfa")}
-                emissiveIntensity={isExploding ? 4 : 0.5 + (progress / 100) * 1.5}
+                emissiveIntensity={isExploding ? 20 : 2 + (progress / 100) * 5} // High intensity for "fake" bloom
                 roughness={0.2}
                 metalness={0.8}
                 wireframe={true}
