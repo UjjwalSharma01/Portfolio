@@ -47,8 +47,7 @@ export const Card = ({ children, className, style, color, ...other }: HTMLMotion
                 }}
             />
 
-            {/* Top Gradient Border Highlight (Static) */}
-            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
 
             {children}
         </motion.div>
