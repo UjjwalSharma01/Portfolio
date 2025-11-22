@@ -72,55 +72,27 @@ const CONFIG = {
             iconType: VSCodeIcon,
         },
     ],
-    hobbies: [
+    experience: [
         {
-            title: "Problem Solving",
-            emoji: "🧩",
-            left: "5%",
-            top: "3%",
-            zIndex: 0,
+            title: "MERN Stack Developer",
+            company: "Quantneural",
+            date: "Jun 2025 - Aug 2025",
+            description: "Refactored 90% of monolithic backend to microservices. Designed comprehensive Postman test suites.",
+            category: "Internship",
         },
         {
-            title: "Blockchain Tech",
-            emoji: "⛓️",
-            left: "50%",
-            top: "3%",
-            zIndex: 0,
+            title: "Project Administrator",
+            company: "Resourcio",
+            date: "Jan 2024",
+            description: "Guided 10+ contributors in open source environment. Managed project timelines and deliverables.",
+            category: "Open Source",
         },
         {
-            title: "Coding",
-            emoji: "💻",
-            left: "10%",
-            top: "33%",
-            zIndex: 0,
-        },
-        {
-            title: "Learning",
-            emoji: "📖",
-            left: "35%",
-            top: "40%",
-            zIndex: -10,
-        },
-        {
-            title: "Open Source",
-            emoji: "🌐",
-            left: "70%",
-            top: "45%",
-            zIndex: 0,
-        },
-        {
-            title: "Tech Meetups",
-            emoji: "👥",
-            left: "5%",
-            top: "65%",
-            zIndex: 0,
-        },
-        {
-            title: "Innovation",
-            emoji: "�",
-            left: "45%",
-            top: "70%",
-            zIndex: 0,
+            title: "General Secretary",
+            company: "E-Cell VIPS-TC",
+            date: "Sep 2024 - Nov 2025",
+            description: "Leading a team of 60+ members. Streamlining operations and fostering cross-department collaboration.",
+            category: "Leadership",
         },
     ],
     footerLinks: [
@@ -191,7 +163,7 @@ const CONFIG = {
                 { title: "Developed CNN model on Streamlit cloud achieving over 90% accuracy." },
             ],
             link: "https://github.com/UjjwalSharma01/Anna",
-            image: annadata, 
+            image: annadata,
             linkText: "GitHub Repo",
         },
     ],
@@ -199,6 +171,6 @@ const CONFIG = {
 
 export const email = CONFIG.email;
 export const toolBoxItems = CONFIG.toolboxItems;
-export const hobbies = CONFIG.hobbies;
+export const experience = CONFIG.experience;
 export const footerLinks = CONFIG.footerLinks;
 export const portfolioProjects = CONFIG.portfolioProjects;

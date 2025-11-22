@@ -2,16 +2,14 @@
 import { Card } from "@/components/Card";
 import { SectionHeader } from "@/components/SectionHeader";
 import Image from "next/image";
-import mapImage from "@/assets/images/map.png";
-// import smileMemoji from "@/assets/images/memoji-smile.png";
 import { CardHeader } from "@/components/CardHeader";
-import { useRef, useState, useEffect } from "react";
-import { hobbies, toolBoxItems } from "../../profile.config";
+import { useState, useEffect } from "react";
+import { experience, toolBoxItems } from "../../profile.config";
 import { motion } from "framer-motion";
 import { SectionReveal } from "@/components/SectionReveal";
 
 export const AboutSection = ({ id }: { id: string }) => {
-    const constraintRef = useRef(null);
+
     const [time, setTime] = useState("");
 
     useEffect(() => {
@@ -119,44 +117,66 @@ export const AboutSection = ({ id }: { id: string }) => {
                         </div>
 
                         <div className="grid gap-8 grid-cols-1 md:grid-cols-5 lg:grid-cols-6">
-                            {/* Beyond the Code */}
+                            {/* Experience */}
                             <Card className="h-auto p-8 flex flex-col md:col-span-3 lg:col-span-4">
                                 <CardHeader
-                                    heading="Beyond the Code"
-                                    description="CS student (8.7 CGPA) exploring emerging tech and contributing to communities."
+                                    heading="Experience"
+                                    description="My professional journey and leadership roles."
                                     className="p-0 mb-8"
                                 />
-                                <div className="flex flex-wrap gap-3 content-start h-[200px] relative" ref={constraintRef}>
-                                    {hobbies.map((hobby, index) => (
+                                <div className="flex flex-col gap-8">
+                                    {experience.map((role, index) => (
                                         <motion.div
-                                            key={hobby.title}
-                                            className="inline-flex items-center gap-2 px-5 py-2.5 bg-zinc-800/30 border border-white/5 rounded-full hover:bg-zinc-800/60 hover:border-white/10 transition-all duration-300 cursor-grab active:cursor-grabbing absolute"
-                                            style={{
-                                                left: hobby.left,
-                                                top: hobby.top,
-                                            }}
-                                            drag
-                                            dragConstraints={constraintRef}
-                                            dragElastic={0.1}
+                                            key={role.title}
                                             initial={{ opacity: 0, y: 20 }}
                                             whileInView={{ opacity: 1, y: 0 }}
-                                            transition={{ delay: 0.5 + index * 0.1 }}
+                                            transition={{ delay: 0.2 + index * 0.1 }}
+                                            className="flex gap-6"
                                         >
-                                            <span className="text-xl">{hobby.emoji}</span>
-                                            <span className="font-medium text-zinc-300">{hobby.title}</span>
+                                            {/* Structural Timeline */}
+                                            <div className="flex flex-col items-center">
+                                                <div className="size-3 rounded-full bg-zinc-700 border border-zinc-500" />
+                                                <div className="w-px flex-1 bg-zinc-800 my-2" />
+                                            </div>
+
+                                            {/* Content */}
+                                            <div className="pb-8 flex-1">
+                                                <div className="flex flex-wrap justify-between items-start gap-4 mb-2">
+                                                    <div>
+                                                        <h3 className="text-lg font-bold text-white leading-tight">{role.title}</h3>
+                                                        <div className="text-zinc-400 text-sm font-medium mt-1">{role.company}</div>
+                                                    </div>
+                                                    <span className="text-xs font-mono text-zinc-500 bg-zinc-900 px-2 py-1 rounded border border-zinc-800">
+                                                        {role.date}
+                                                    </span>
+                                                </div>
+
+                                                <p className="text-zinc-400 text-sm leading-relaxed mb-4 max-w-xl">
+                                                    {role.description}
+                                                </p>
+
+                                                {/* Structural Badges */}
+                                                <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded text-[10px] font-mono font-medium uppercase tracking-wider border border-zinc-700 text-zinc-400">
+                                                    {role.category}
+                                                </span>
+                                            </div>
                                         </motion.div>
                                     ))}
                                 </div>
                             </Card>
 
                             {/* Map */}
-                            <Card className="h-[320px] md:h-auto p-0 relative md:col-span-2 lg:col-span-2 overflow-hidden min-h-[320px]">
-                                <Image
-                                    src={mapImage}
-                                    alt="Map Image"
-                                    className="h-full w-full object-cover object-left-top grayscale hover:grayscale-0 transition-all duration-700"
+                            <Card className="h-[320px] md:h-auto p-0 relative md:col-span-2 lg:col-span-2 overflow-hidden min-h-[320px] group">
+                                <iframe
+                                    src="https://maps.google.com/maps?q=Karol+Bagh,New+Delhi&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                                    width="100%"
+                                    height="100%"
+                                    style={{ border: 0 }}
+                                    allowFullScreen
                                     loading="lazy"
-                                />
+                                    referrerPolicy="no-referrer-when-downgrade"
+                                    className="h-full w-full grayscale invert-[1] contrast-[1.2] opacity-50 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                                ></iframe>
                                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-20 rounded-full after:content-[''] after:absolute after:inset-0 after:outline after:outline-2 after:-outline-offset-2 after:rounded-full after:outline-gray-950/30">
                                     <div className="absolute inset-0 -z-10 bg-gradient-to-r from-accent to-violet-400 rounded-full animate-ping [animation-duration:3s] opacity-20"></div>
                                     <div className="absolute inset-0 -z-10 bg-gradient-to-r from-accent to-violet-400 rounded-full"></div>
@@ -177,6 +197,6 @@ export const AboutSection = ({ id }: { id: string }) => {
                     </div>
                 </SectionReveal>
             </section>
-        </div>
+        </div >
     );
 };
