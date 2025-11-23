@@ -6,7 +6,7 @@ import grainImage from "@/assets/images/grain.jpg";
 
 const ResponsiveCamera = () => {
     const { camera, size } = useThree();
-    
+
     useEffect(() => {
         const aspect = size.width / size.height;
         // If portrait mode (mobile), move camera back to fit the rings
@@ -44,13 +44,13 @@ const RotatingRing = ({ radius, speed, axis, color, isExploding }: { radius: num
     return (
         <mesh ref={ref}>
             <torusGeometry args={[radius, 0.03, 32, 100]} />
-            <meshStandardMaterial 
-                color={color} 
+            <meshStandardMaterial
+                color={color}
                 emissive={color}
                 emissiveIntensity={0.5}
-                transparent 
-                opacity={0.4} 
-                side={THREE.DoubleSide} 
+                transparent
+                opacity={0.4}
+                side={THREE.DoubleSide}
             />
         </mesh>
     );
@@ -67,7 +67,7 @@ const CoreGeometry = ({ isExploding, progress }: { isExploding: boolean; progres
 
             // Pulse effect based on progress
             const pulse = 1 + Math.sin(state.clock.elapsedTime * 4) * 0.05;
-            
+
             if (isExploding) {
                 // Warp jump effect: Scale up massively and fade out
                 meshRef.current.scale.lerp(new THREE.Vector3(30, 30, 30), delta * 3);
@@ -95,9 +95,9 @@ const CoreGeometry = ({ isExploding, progress }: { isExploding: boolean; progres
                     opacity={isExploding ? 0 : 0.8}
                 />
             </mesh>
-            
+
             {/* Inner Glow Sphere */}
-            <mesh scale={isExploding ? [30,30,30] : [0.8, 0.8, 0.8]}>
+            <mesh scale={isExploding ? [30, 30, 30] : [0.8, 0.8, 0.8]}>
                 <sphereGeometry args={[1, 32, 32]} />
                 <meshBasicMaterial color="#a78bfa" transparent opacity={isExploding ? 0 : 0.1} />
             </mesh>
@@ -122,7 +122,7 @@ const DigitalCore = ({ onLoaded, progress }: { onLoaded: () => void; progress: n
     return (
         <group>
             <CoreGeometry isExploding={isExploding} progress={progress} />
-            
+
             {/* Orbital Rings representing data streams or electron shells */}
             <RotatingRing radius={2.5} speed={0.4} axis="x" color="#a78bfa" isExploding={isExploding} />
             <RotatingRing radius={3.2} speed={0.3} axis="y" color="#8b5cf6" isExploding={isExploding} />
@@ -137,6 +137,32 @@ const DigitalCore = ({ onLoaded, progress }: { onLoaded: () => void; progress: n
 export const LoadingScreen = ({ onFinished }: { onFinished: () => void }) => {
     const [progress, setProgress] = useState(0);
     const [isCanvasReady, setIsCanvasReady] = useState(false);
+
+    const handleSkip = () => {
+        // Mark as visited for future sessions
+        localStorage.setItem('portfolio-visited', 'true');
+        onFinished();
+    };
+
+    useEffect(() => {
+        // Check if user has visited before
+        const hasVisited = localStorage.getItem('portfolio-visited');
+        if (hasVisited) {
+            // Auto-skip for returning visitors
+            onFinished();
+            return;
+        }
+
+        // ESC key to skip
+        const handleKeyPress = (e: KeyboardEvent) => {
+            if (e.key === 'Escape') {
+                handleSkip();
+            }
+        };
+
+        window.addEventListener('keydown', handleKeyPress);
+        return () => window.removeEventListener('keydown', handleKeyPress);
+    }, [onFinished]);
 
     useEffect(() => {
         if (!isCanvasReady) return;
@@ -164,7 +190,7 @@ export const LoadingScreen = ({ onFinished }: { onFinished: () => void }) => {
             ></div>
 
             <div className={`absolute inset-0 z-10 overflow-hidden transition-opacity duration-700 ${isCanvasReady ? 'opacity-100' : 'opacity-0'}`}>
-                <Canvas 
+                <Canvas
                     camera={{ position: [0, 0, 10], fov: 45 }}
                     onCreated={() => setIsCanvasReady(true)}
                 >
@@ -180,6 +206,15 @@ export const LoadingScreen = ({ onFinished }: { onFinished: () => void }) => {
             <div className={`absolute bottom-12 left-0 w-full text-center text-[#a78bfa]/80 font-mono text-sm tracking-widest animate-pulse z-10 transition-opacity duration-700 ${isCanvasReady ? 'opacity-100' : 'opacity-0'}`}>
                 INITIALIZING SYSTEM... {progress}%
             </div>
+
+            {/* Skip Button */}
+            <button
+                onClick={handleSkip}
+                className="absolute top-6 right-6 z-20 px-4 py-2 text-sm font-medium text-white/70 hover:text-white border border-white/10 hover:border-white/30 rounded-lg transition-all duration-300 hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-[#09090b]"
+                aria-label="Skip loading animation"
+            >
+                Skip <span className="text-xs text-white/50">(ESC)</span>
+            </button>
         </div>
     );
 };

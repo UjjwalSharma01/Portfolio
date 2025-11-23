@@ -8,10 +8,12 @@ import { useState, useEffect } from "react";
 import { experience, toolBoxItems } from "../../profile.config";
 import { motion } from "framer-motion";
 import { SectionReveal } from "@/components/SectionReveal";
+import { SkillTooltip } from "@/components/SkillTooltip";
 
 export const AboutSection = ({ id }: { id: string }) => {
 
     const [time, setTime] = useState("");
+    const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
 
     useEffect(() => {
         const updateTime = () => {
@@ -100,19 +102,26 @@ export const AboutSection = ({ id }: { id: string }) => {
                                 />
                                 <div className="flex flex-wrap gap-3">
                                     {toolBoxItems.map((item, index) => (
-                                        <motion.div
+                                        <SkillTooltip
                                             key={item.title}
-                                            initial={{ opacity: 0, scale: 0.8 }}
-                                            whileInView={{ opacity: 1, scale: 1 }}
-                                            whileHover={{ y: -5 }}
-                                            transition={{ delay: index * 0.05 }}
-                                            className="inline-flex items-center gap-3 px-4 py-3 bg-zinc-800/30 border border-white/5 rounded-xl hover:bg-zinc-800/50 transition-colors group cursor-default"
+                                            title={item.title}
+                                            isVisible={hoveredSkill === item.title}
                                         >
-                                            <div className="size-8 relative flex items-center justify-center transition-all duration-300 [&>svg]:w-full [&>svg]:h-full [&>svg]:grayscale group-hover:[&>svg]:grayscale-0">
-                                                <item.iconType />
-                                            </div>
-                                            <span className="font-medium text-zinc-400 group-hover:text-white transition-colors">{item.title}</span>
-                                        </motion.div>
+                                            <motion.div
+                                                initial={{ opacity: 0, scale: 0.8 }}
+                                                whileInView={{ opacity: 1, scale: 1 }}
+                                                whileHover={{ y: -5, scale: 1.05 }}
+                                                transition={{ delay: index * 0.05 }}
+                                                onHoverStart={() => setHoveredSkill(item.title)}
+                                                onHoverEnd={() => setHoveredSkill(null)}
+                                                className="inline-flex items-center gap-3 px-4 py-3 bg-zinc-800/30 border border-white/5 rounded-xl hover:bg-zinc-800/50 hover:border-accent/30 transition-all group cursor-default hover:shadow-lg hover:shadow-accent/5"
+                                            >
+                                                <div className="size-8 relative flex items-center justify-center transition-all duration-300 [&>svg]:w-full [&>svg]:h-full [&>svg]:grayscale group-hover:[&>svg]:grayscale-0 group-hover:drop-shadow-[0_0_8px_rgba(167,139,250,0.3)]">
+                                                    <item.iconType />
+                                                </div>
+                                                <span className="font-medium text-zinc-400 group-hover:text-white transition-colors">{item.title}</span>
+                                            </motion.div>
+                                        </SkillTooltip>
                                     ))}
                                 </div>
                             </CardSpotlight>
@@ -184,9 +193,10 @@ export const AboutSection = ({ id }: { id: string }) => {
                                     <div className="absolute inset-0 -z-10 bg-gradient-to-r from-accent to-violet-400 rounded-full"></div>
                                     <Image
                                         src="/images/pic.jpg"
-                                        alt="Ujjwal Sharma profile photo"
+                                        alt="Ujjwal Sharma - Based in New Delhi, India - Full Stack Developer available for projects"
                                         width={80}
                                         height={80}
+                                        loading="lazy"
                                         className="size-20 object-cover rounded-full border-2 border-white/10"
                                     />
                                 </div>

@@ -1,24 +1,6 @@
 import { ArrowUpRightIcon } from "@/components/Icons";
 import { Magnetic } from "@/components/Magnetic";
-
-const footerLinks = [
-    {
-        title: "LinkedIn",
-        href: "https://linkedin.com/in/ujjwalsharma01",
-    },
-    {
-        title: "GitHub",
-        href: "https://github.com/UjjwalSharma01",
-    },
-    {
-        title: "Twitter",
-        href: "https://twitter.com/ujjwalsharma01",
-    },
-    {
-        title: "Instagram",
-        href: "https://instagram.com/ujjwalsharma01",
-    },
-];
+import { footerLinks } from "../../profile.config";
 
 export const Footer = () => {
     return (

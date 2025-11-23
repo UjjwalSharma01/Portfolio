@@ -4,6 +4,7 @@ import "./globals.css";
 import { twMerge } from "tailwind-merge";
 import { GrainOverlay } from "@/components/GrainOverlay";
 import ClientLayout from "./ClientLayout";
+import { SkipToContent } from "@/components/SkipToContent";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 const calistoga = Calistoga({ subsets: ["latin"], variable: "--font-serif", weight: ["400"] });
@@ -42,10 +43,10 @@ export const metadata: Metadata = {
         description: "Full Stack Developer & Computer Science student with expertise in React, Node.js, and modern web technologies. Top 0.3% NCAT performer with proven leadership experience.",
         images: [
             {
-                url: "/images/pic.jpg",
+                url: "https://ujjwalsharma.tech/images/pic.jpg",
                 width: 1200,
                 height: 630,
-                alt: "Ujjwal Sharma - Full Stack Developer",
+                alt: "Ujjwal Sharma - Full Stack Developer Portfolio",
             },
         ],
     },
@@ -53,8 +54,8 @@ export const metadata: Metadata = {
         card: "summary_large_image",
         title: "Ujjwal Sharma - Full Stack Developer",
         description: "Full Stack Developer & Computer Science student with expertise in React, Node.js, and modern web technologies.",
-        creator: "@ujjwalsharma01",
-        images: ["/images/pic.jpg"],
+        creator: "@sharma_ujjwal01",
+        images: ["https://ujjwalsharma.tech/images/pic.jpg"],
     },
     robots: {
         index: true,
@@ -102,7 +103,8 @@ export default function RootLayout({
                             "telephone": "+918630684718",
                             "address": {
                                 "@type": "PostalAddress",
-                                "addressLocality": "Delhi",
+                                "addressLocality": "New Delhi",
+                                "addressRegion": "Delhi",
                                 "addressCountry": "India"
                             },
                             "alumniOf": {
@@ -112,19 +114,23 @@ export default function RootLayout({
                             },
                             "knowsAbout": [
                                 "JavaScript",
+                                "TypeScript",
                                 "React",
                                 "Node.js",
                                 "Express.js",
                                 "MongoDB",
-                                "MySQL",
-                                "Python",
-                                "C++",
+                                "Firebase",
+                                "HTML5",
+                                "CSS",
+                                "Git",
                                 "Full Stack Development",
-                                "Web Development"
+                                "Web Development",
+                                "MERN Stack"
                             ],
                             "sameAs": [
                                 "https://linkedin.com/in/ujjwalsharma01",
                                 "https://github.com/UjjwalSharma01",
+                                "https://x.com/sharma_ujjwal01",
                                 "https://ujjwalsharma.tech"
                             ],
                             "image": "https://ujjwalsharma.tech/images/pic.jpg"
@@ -138,6 +144,7 @@ export default function RootLayout({
                     calistoga.variable,
                     "bg-dark-bg text-primary-text font-sans antialiased"
                 )}>
+                <SkipToContent />
                 <GrainOverlay />
                 <ClientLayout>{children}</ClientLayout>
             </body>

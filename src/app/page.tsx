@@ -12,7 +12,7 @@ import { useState } from "react";
 export default function Home() {
     const [activeSectionId, setActiveSectionId] = useState<string>(heroSectionId);
     return (
-        <main>
+        <main id="main-content">
             <Header activeSectionId={activeSectionId} setActiveSectionId={setActiveSectionId} />
             <HeroSection id={heroSectionId} />
             <ProjectsSection id={projectsSectionId} />

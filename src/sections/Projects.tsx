@@ -63,7 +63,8 @@ const ProjectCard = ({ project, index, totalProjects, scrollYProgress }: Project
                     <div className="relative">
                         <Image
                             src={project.image}
-                            alt={project.title}
+                            alt={`${project.title} - ${project.company} project screenshot showing ${project.results[0].title}`}
+                            loading="lazy"
                             className="-mb-4 md:-mb-0 lg:absolute lg:h-full lg:w-auto lg:max-w-none border-2 border-white/5 rounded-t-xl shadow-lg transition-transform duration-500 group-hover:scale-105 group-hover:-rotate-1"
                         />
                     </div>

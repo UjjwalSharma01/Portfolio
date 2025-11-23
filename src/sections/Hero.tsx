@@ -32,7 +32,7 @@ export const HeroSection = ({ id }: { id: string }) => {
                         <div className="relative w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 rounded-full overflow-hidden border-4 border-white/10 shadow-2xl mb-8 group">
                             <Image
                                 src="/images/pic.jpg"
-                                alt="Ujjwal Sharma profile photo"
+                                alt="Ujjwal Sharma - Full Stack Developer and Computer Science student specializing in React, Node.js, and modern web technologies"
                                 fill
                                 style={{ objectFit: 'cover' }}
                                 sizes="(max-width: 768px) 128px, (max-width: 1024px) 160px, 192px"
