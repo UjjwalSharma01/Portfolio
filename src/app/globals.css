@@ -9,6 +9,10 @@
             /* 5xl = 64rem */
         }
     }
+
+    .glass-panel {
+        @apply bg-zinc-900/80 backdrop-blur-md border border-white/10;
+    }
 }
 
 ::selection {
@@ -16,4 +20,25 @@
     /* accent/30 */
     color: #f4f4f5;
     /* primary-text */
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #09090b;
+    /* dark-bg */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #27272a;
+    /* zinc-800 */
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #3f3f46;
+    /* zinc-700 */
 }

@@ -3,7 +3,7 @@ import Image from "next/image";
 import CheckIcon from "@/assets/icons/check-circle.svg";
 import ArrowUpRightIcon from "@/assets/icons/arrow-up-right.svg";
 import { SectionHeader } from "@/components/SectionHeader";
-import { Card } from "@/components/Card";
+import { CardSpotlight } from "@/components/CardSpotlight";
 import { portfolioProjects } from "../../profile.config";
 import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
 import { useRef } from "react";
@@ -28,10 +28,10 @@ const ProjectCard = ({ project, index, totalProjects, scrollYProgress }: Project
                 top: `calc(64px + ${index * 40}px)`,
             }}
         >
-            <Card
+            <CardSpotlight
                 className={twMerge(
                     "px-8 pt-8 pb-0 md:pt-12 md:px-10 lg:px-20 lg:pt-16",
-                    index > 0 && "bg-zinc-900 backdrop-blur-none"
+                    "bg-zinc-900 backdrop-blur-none"
                 )}>
                 <div className="lg:grid lg:grid-cols-2 lg:gap-16">
                     <div className="lg:pb-8">
@@ -65,11 +65,11 @@ const ProjectCard = ({ project, index, totalProjects, scrollYProgress }: Project
                         <Image
                             src={project.image}
                             alt={project.title}
-                            className="-mb-4 md:-mb-0 lg:absolute lg:h-full lg:w-auto lg:max-w-none border-2 border-white/5 rounded-t-xl shadow-lg"
+                            className="-mb-4 md:-mb-0 lg:absolute lg:h-full lg:w-auto lg:max-w-none border-2 border-white/5 rounded-t-xl shadow-lg transition-transform duration-500 group-hover:scale-105 group-hover:-rotate-1"
                         />
                     </div>
                 </div>
-            </Card>
+            </CardSpotlight>
         </motion.div>
     );
 };

@@ -1,5 +1,6 @@
 "use client";
 import { Card } from "@/components/Card";
+import { CardSpotlight } from "@/components/CardSpotlight";
 import { SectionHeader } from "@/components/SectionHeader";
 import Image from "next/image";
 import { CardHeader } from "@/components/CardHeader";
@@ -38,7 +39,7 @@ export const AboutSection = ({ id }: { id: string }) => {
                     <div className="mt-20 flex flex-col gap-8">
                         <div className="grid gap-8 grid-cols-1 md:grid-cols-5 lg:grid-cols-2">
                             {/* Key Achievements */}
-                            <Card className="h-auto md:col-span-2 lg:col-span-1 p-8 flex flex-col">
+                            <CardSpotlight className="h-auto md:col-span-2 lg:col-span-1 p-8 flex flex-col">
                                 <CardHeader
                                     heading="Key Achievements"
                                     description="Recognized for technical excellence and leadership."
@@ -88,10 +89,10 @@ export const AboutSection = ({ id }: { id: string }) => {
                                         <div className="text-zinc-400 text-sm pl-10">Secretary, E-Cell (45+ members)</div>
                                     </motion.div>
                                 </div>
-                            </Card>
+                            </CardSpotlight>
 
                             {/* Technical Journey */}
-                            <Card className="h-auto p-8 md:col-span-3 lg:col-span-1 flex flex-col" color="rgba(56, 189, 248, 0.15)">
+                            <CardSpotlight className="h-auto p-8 md:col-span-3 lg:col-span-1 flex flex-col" color="rgba(56, 189, 248, 0.15)">
                                 <CardHeader
                                     heading="My Technical Journey"
                                     description="Full-stack developer with team leadership experience and active open-source contributions."
@@ -103,8 +104,9 @@ export const AboutSection = ({ id }: { id: string }) => {
                                             key={item.title}
                                             initial={{ opacity: 0, scale: 0.8 }}
                                             whileInView={{ opacity: 1, scale: 1 }}
+                                            whileHover={{ y: -5 }}
                                             transition={{ delay: index * 0.05 }}
-                                            className="inline-flex items-center gap-3 px-4 py-3 bg-zinc-800/30 border border-white/5 rounded-xl hover:bg-zinc-800/50 transition-colors group"
+                                            className="inline-flex items-center gap-3 px-4 py-3 bg-zinc-800/30 border border-white/5 rounded-xl hover:bg-zinc-800/50 transition-colors group cursor-default"
                                         >
                                             <div className="size-8 relative grayscale group-hover:grayscale-0 transition-all duration-300">
                                                 <item.iconType className="w-full h-full" />
@@ -113,7 +115,7 @@ export const AboutSection = ({ id }: { id: string }) => {
                                         </motion.div>
                                     ))}
                                 </div>
-                            </Card>
+                            </CardSpotlight>
                         </div>
 
                         <div className="grid gap-8 grid-cols-1 md:grid-cols-5 lg:grid-cols-6">
