@@ -207,13 +207,13 @@ export const LoadingScreen = ({ onFinished }: { onFinished: () => void }) => {
                 INITIALIZING SYSTEM... {progress}%
             </div>
 
-            {/* Skip Button */}
+            {/* Skip Button - Mobile: Bottom Center, Desktop: Top Right */}
             <button
                 onClick={handleSkip}
-                className="absolute top-6 right-6 z-20 px-4 py-2 text-sm font-medium text-white/70 hover:text-white border border-white/10 hover:border-white/30 rounded-lg transition-all duration-300 hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-[#09090b]"
+                className="absolute bottom-24 left-1/2 -translate-x-1/2 md:bottom-auto md:top-6 md:left-auto md:right-6 md:translate-x-0 z-20 px-6 py-3 md:px-4 md:py-2 text-base md:text-sm font-semibold md:font-medium text-white/90 md:text-white/70 hover:text-white bg-white/10 md:bg-transparent border border-white/20 hover:border-white/40 md:border-white/10 md:hover:border-white/30 rounded-full md:rounded-lg transition-all duration-300 hover:bg-white/20 md:hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-[#09090b] shadow-lg md:shadow-none backdrop-blur-sm active:scale-95"
                 aria-label="Skip loading animation"
             >
-                Skip <span className="text-xs text-white/50">(ESC)</span>
+                Skip Animation <span className="hidden md:inline text-xs text-white/50 ml-1">(ESC)</span>
             </button>
         </div>
     );

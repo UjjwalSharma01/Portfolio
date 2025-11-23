@@ -7,6 +7,7 @@ import ClientLayout from "./ClientLayout";
 import { SkipToContent } from "@/components/SkipToContent";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { BackToTop } from "@/components/BackToTop";
+import { portfolioProjects } from "../../profile.config";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 const calistoga = Calistoga({ subsets: ["latin"], variable: "--font-serif", weight: ["400"] });
@@ -45,7 +46,7 @@ export const metadata: Metadata = {
         description: "Full Stack Developer & Computer Science student with expertise in React, Node.js, and modern web technologies. Top 0.3% NCAT performer with proven leadership experience.",
         images: [
             {
-                url: "https://ujjwalsharma.tech/images/pic.jpg",
+                url: "https://ujjwalsharma.tech/images/og-image.png",
                 width: 1200,
                 height: 630,
                 alt: "Ujjwal Sharma - Full Stack Developer Portfolio",
@@ -57,7 +58,7 @@ export const metadata: Metadata = {
         title: "Ujjwal Sharma - Full Stack Developer",
         description: "Full Stack Developer & Computer Science student with expertise in React, Node.js, and modern web technologies.",
         creator: "@sharma_ujjwal01",
-        images: ["https://ujjwalsharma.tech/images/pic.jpg"],
+        images: ["https://ujjwalsharma.tech/images/og-image.png"],
     },
     robots: {
         index: true,
@@ -70,11 +71,18 @@ export const metadata: Metadata = {
             "max-snippet": -1,
         },
     },
-    verification: {
-        google: "your-google-verification-code", // Replace with actual verification code
-    },
+    // Add Google Search Console verification code here after claiming your site
+    // verification: {
+    //     google: "your-verification-code-here",
+    // },
     alternates: {
         canonical: "https://ujjwalsharma.tech",
+        languages: {
+            'en-US': 'https://ujjwalsharma.tech',
+            'x-default': 'https://ujjwalsharma.tech',
+            // Add more languages as needed:
+            // 'hi-IN': 'https://ujjwalsharma.tech/hi',
+        },
     },
     category: "technology",
 };
@@ -136,6 +144,33 @@ export default function RootLayout({
                                 "https://ujjwalsharma.tech"
                             ],
                             "image": "https://ujjwalsharma.tech/images/pic.jpg"
+                        })
+                    }}
+                />
+                {/* Structured Data for Portfolio Projects */}
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({
+                            "@context": "https://schema.org",
+                            "@type": "ItemList",
+                            "itemListElement": portfolioProjects.map((project, index) => ({
+                                "@type": "ListItem",
+                                "position": index + 1,
+                                "item": {
+                                    "@type": "CreativeWork",
+                                    "name": project.title,
+                                    "description": project.results.map(r => r.title).join(" "),
+                                    "url": project.link,
+                                    "creator": {
+                                        "@type": "Person",
+                                        "name": "Ujjwal Sharma"
+                                    },
+                                    "datePublished": project.year,
+                                    "keywords": project.company,
+                                    "image": `https://ujjwalsharma.tech${project.image.src}`
+                                }
+                            }))
                         })
                     }}
                 />
