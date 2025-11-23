@@ -15,10 +15,18 @@ export default function Home() {
         <main id="main-content">
             <Header activeSectionId={activeSectionId} setActiveSectionId={setActiveSectionId} />
             <HeroSection id={heroSectionId} />
-            <ProjectsSection id={projectsSectionId} />
-            <TapeSection />
-            <AboutSection id={aboutSectionId} />
-            <ContactSection id={contactSectionId} />
+            <section aria-label="Featured projects">
+                <ProjectsSection id={projectsSectionId} />
+            </section>
+            <section aria-label="Skills and technologies">
+                <TapeSection />
+            </section>
+            <section aria-label="About me and experience">
+                <AboutSection id={aboutSectionId} />
+            </section>
+            <section aria-label="Contact information">
+                <ContactSection id={contactSectionId} />
+            </section>
             <Footer />
         </main>
     );

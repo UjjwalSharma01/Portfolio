@@ -137,7 +137,7 @@ export const Header = ({
         <>
             {/* Centered Navigation */}
             <div className="flex justify-center items-center fixed top-3 w-full z-50">
-                <nav className="flex gap-1 p-0.5 border border-white/15 rounded-full bg-white/10 backdrop-blur-md">
+                <nav className="flex gap-1 p-0.5 border border-white/15 rounded-full bg-white/10 backdrop-blur-md" aria-label="Main navigation">
                     {sectionIds.map((sectionId) => {
                         const labels: Record<string, string> = {
                             [heroSectionId]: "Home",
@@ -152,6 +152,7 @@ export const Header = ({
                                 href={`#${sectionId}`}
                                 onClick={handleClick}
                                 aria-current={activeSectionId === sectionId ? "page" : undefined}
+                                aria-label={`Navigate to ${labels[sectionId]} section`}
                                 className={twMerge(
                                     "px-3 md:px-4 py-1.5 rounded-full text-white/70 text-sm font-semibold hover:text-white transition-colors duration-200 relative outline-none focus-visible:ring-2 focus-visible:ring-white/50",
                                     sectionId === heroSectionId && "hidden md:inline-flex"
@@ -180,6 +181,7 @@ export const Header = ({
                         target="_blank"
                         rel="noopener noreferrer"
                         className="md:hidden"
+                        aria-label="Download resume (opens in new tab)"
                     >
                         <div className="px-3 py-1.5 rounded-full text-sm font-semibold bg-white text-gray-950 hover:bg-gray-100 active:scale-95 transition-all duration-300 flex items-center gap-1 group">
                             <span className="tracking-tight">Resume</span>
@@ -195,6 +197,7 @@ export const Header = ({
                     href="https://ggl.link/ujjwalresume"
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label="Download resume (opens in new tab)"
                     className="inline-flex items-center justify-center px-5 py-2 rounded-full text-sm font-semibold bg-white text-gray-950 hover:bg-gray-100 active:scale-95 transition-all duration-300 gap-2 group shadow-[0_2px_12px_rgba(0,0,0,0.2)]"
                 >
                     <span className="tracking-tight">Resume</span>
