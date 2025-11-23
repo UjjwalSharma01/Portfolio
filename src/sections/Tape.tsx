@@ -1,4 +1,4 @@
-import StarIcon from "@/assets/icons/star.svg";
+import { StarIcon } from "@/components/Icons";
 import { Fragment } from "react";
 
 const words = [

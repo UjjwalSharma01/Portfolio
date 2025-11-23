@@ -1,4 +1,4 @@
-import ArrowUpRightIcon from "@/assets/icons/arrow-up-right.svg";
+import { ArrowUpRightIcon } from "@/components/Icons";
 import { Magnetic } from "@/components/Magnetic";
 
 const footerLinks = [

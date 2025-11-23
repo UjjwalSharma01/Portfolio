@@ -2,7 +2,7 @@ import { Dispatch, MouseEvent, SetStateAction, useEffect, useCallback, useMemo, 
 import { aboutSectionId, contactSectionId, heroSectionId, projectsSectionId } from "./constants";
 import { twMerge } from "tailwind-merge";
 import { motion } from "framer-motion";
-import ArrowUpRightIcon from "@/assets/icons/arrow-up-right.svg";
+import { ArrowUpRightIcon } from "@/components/Icons";
 
 export const Header = ({
     activeSectionId,

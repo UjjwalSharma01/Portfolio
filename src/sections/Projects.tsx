@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
-import CheckIcon from "@/assets/icons/check-circle.svg";
-import ArrowUpRightIcon from "@/assets/icons/arrow-up-right.svg";
+import { ArrowUpRightIcon, CheckCircleIcon } from "@/components/Icons";
 import { SectionHeader } from "@/components/SectionHeader";
 import { CardSpotlight } from "@/components/CardSpotlight";
 import { portfolioProjects } from "../../profile.config";
@@ -49,7 +48,7 @@ const ProjectCard = ({ project, index, totalProjects, scrollYProgress }: Project
                                 <li
                                     key={result.title}
                                     className="inline-flex gap-2 text-muted-text font-light text-sm md:text-base">
-                                    <CheckIcon className="size-5 md:size-6 text-accent/50" />
+                                    <CheckCircleIcon className="size-5 md:size-6 text-accent/50" />
                                     <span>{result.title}</span>
                                 </li>
                             ))}

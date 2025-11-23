@@ -1,5 +1,5 @@
 import Image from "next/image";
-import ArrowDown from "@/assets/icons/arrow-down.svg";
+import { ArrowDownIcon } from "@/components/Icons";
 import grainImage from "@/assets/images/grain.jpg";
 import { contactSectionId, projectsSectionId } from "./constants";
 import { Magnetic } from "@/components/Magnetic";
@@ -72,7 +72,7 @@ export const HeroSection = ({ id }: { id: string }) => {
                         <Magnetic>
                             <button className="inline-flex items-center gap-2 border border-white/10 bg-white/5 hover:bg-white/10 px-8 h-14 rounded-full transition-all duration-300 backdrop-blur-sm group hover:border-white/20 hover:scale-105">
                                 <span className="font-semibold text-white group-hover:text-accent transition-colors">Explore My Work</span>
-                                <ArrowDown className="size-4 group-hover:translate-y-1 transition-transform" />
+                                <ArrowDownIcon className="size-4 group-hover:translate-y-1 transition-transform" />
                             </button>
                         </Magnetic>
                     </a>

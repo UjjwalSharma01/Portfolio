@@ -1,4 +1,4 @@
-import ArrowUpRightIcon from "@/assets/icons/arrow-up-right.svg";
+import { ArrowUpRightIcon } from "@/components/Icons";
 import grainImage from "@/assets/images/grain.jpg";
 import { Card } from "@/components/Card";
 import { SectionReveal } from "@/components/SectionReveal";

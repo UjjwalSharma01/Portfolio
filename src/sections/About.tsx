@@ -108,8 +108,8 @@ export const AboutSection = ({ id }: { id: string }) => {
                                             transition={{ delay: index * 0.05 }}
                                             className="inline-flex items-center gap-3 px-4 py-3 bg-zinc-800/30 border border-white/5 rounded-xl hover:bg-zinc-800/50 transition-colors group cursor-default"
                                         >
-                                            <div className="size-8 relative grayscale group-hover:grayscale-0 transition-all duration-300">
-                                                <item.iconType className="w-full h-full" />
+                                            <div className="size-8 relative flex items-center justify-center transition-all duration-300 [&>svg]:w-full [&>svg]:h-full [&>svg]:grayscale group-hover:[&>svg]:grayscale-0">
+                                                <item.iconType />
                                             </div>
                                             <span className="font-medium text-zinc-400 group-hover:text-white transition-colors">{item.title}</span>
                                         </motion.div>
