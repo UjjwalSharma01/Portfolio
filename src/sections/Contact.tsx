@@ -33,6 +33,15 @@ export const ContactSection = ({ id }: { id: string }) => {
                                 <p className="text-sm md:text-base mt-2 text-muted-text max-w-md">
                                     Ready to bring your next project to life? Send me an email or schedule a call to discuss how I can help you achieve your goals.
                                 </p>
+                                <div className="flex items-center justify-center md:justify-start gap-2 mt-4 text-xs md:text-sm text-white/60">
+                                    <div className="flex items-center gap-1.5">
+                                        <svg className="size-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <div className="size-1.5 rounded-full bg-emerald-400 animate-pulse"></div>
+                                    </div>
+                                    <span>Usually responds within 24 hours</span>
+                                </div>
                             </div>
                             <div className="flex flex-col gap-4 w-full md:w-auto">
                                 <a href="mailto:ujjwalsh2004@gmail.com" className="w-full md:w-auto">
