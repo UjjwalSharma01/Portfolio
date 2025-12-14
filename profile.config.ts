@@ -77,6 +77,7 @@ const CONFIG = {
             date: "Jun 2025 - Aug 2025",
             description: "Refactored 90% of monolithic backend to microservices. Designed comprehensive Postman test suites.",
             category: "Internship",
+            type: "Technical",
         },
         {
             title: "Project Administrator",
@@ -84,6 +85,7 @@ const CONFIG = {
             date: "Jan 2024",
             description: "Guided 10+ contributors in open source environment. Managed project timelines and deliverables.",
             category: "Open Source",
+            type: "Technical",
         },
         {
             title: "General Secretary",
@@ -91,6 +93,7 @@ const CONFIG = {
             date: "Sep 2024 - Nov 2025",
             description: "Leading a team of 60+ members. Streamlining operations and fostering cross-department collaboration.",
             category: "Leadership",
+            type: "Leadership",
         },
     ],
     footerLinks: [

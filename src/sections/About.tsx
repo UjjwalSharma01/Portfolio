@@ -9,6 +9,7 @@ import { experience, toolBoxItems } from "../../profile.config";
 import { motion } from "framer-motion";
 import { SectionReveal } from "@/components/SectionReveal";
 import { SkillTooltip } from "@/components/SkillTooltip";
+import { TerminalIcon, UsersIcon } from "@/components/Icons";
 
 export const AboutSection = ({ id }: { id: string }) => {
 
@@ -136,43 +137,103 @@ export const AboutSection = ({ id }: { id: string }) => {
                                     className="p-0 mb-8"
                                 />
                                 <div className="flex flex-col gap-8">
-                                    {experience.map((role, index) => (
-                                        <motion.div
-                                            key={role.title}
-                                            initial={{ opacity: 0, y: 20 }}
-                                            whileInView={{ opacity: 1, y: 0 }}
-                                            transition={{ delay: 0.2 + index * 0.1 }}
-                                            className="flex gap-6"
-                                        >
-                                            {/* Structural Timeline */}
-                                            <div className="flex flex-col items-center">
-                                                <div className="size-3 rounded-full bg-zinc-700 border border-zinc-500" />
-                                                <div className="w-px flex-1 bg-zinc-800 my-2" />
+                                    {/* Technical Experience */}
+                                    <div>
+                                        <h4 className="text-xl font-bold text-white mb-6 flex items-center gap-3">
+                                            <div className="bg-zinc-800/50 p-2 rounded-lg border border-white/5 shadow-sm text-accent -ml-3">
+                                                <TerminalIcon className="size-5" />
                                             </div>
-
-                                            {/* Content */}
-                                            <div className="pb-8 flex-1">
-                                                <div className="flex flex-wrap justify-between items-start gap-4 mb-2">
-                                                    <div>
-                                                        <h3 className="text-lg font-bold text-white leading-tight">{role.title}</h3>
-                                                        <div className="text-zinc-400 text-sm font-medium mt-1">{role.company}</div>
+                                            Technical Experience
+                                        </h4>
+                                        <div className="flex flex-col gap-8">
+                                            {experience.filter(role => role.type === "Technical").map((role, index) => (
+                                                <motion.div
+                                                    key={role.title}
+                                                    initial={{ opacity: 0, y: 20 }}
+                                                    whileInView={{ opacity: 1, y: 0 }}
+                                                    transition={{ delay: 0.2 + index * 0.1 }}
+                                                    className="flex gap-6"
+                                                >
+                                                    {/* Structural Timeline */}
+                                                    <div className="flex flex-col items-center">
+                                                        <div className="size-3 rounded-full bg-zinc-700 border border-zinc-500" />
+                                                        <div className="w-px flex-1 bg-zinc-800 my-2" />
                                                     </div>
-                                                    <span className="text-xs font-mono text-zinc-500 bg-zinc-900 px-2 py-1 rounded border border-zinc-800">
-                                                        {role.date}
-                                                    </span>
-                                                </div>
 
-                                                <p className="text-zinc-400 text-sm leading-relaxed mb-4 max-w-xl">
-                                                    {role.description}
-                                                </p>
+                                                    {/* Content */}
+                                                    <div className="pb-8 flex-1">
+                                                        <div className="flex flex-wrap justify-between items-start gap-4 mb-2">
+                                                            <div>
+                                                                <h3 className="text-lg font-bold text-white leading-tight">{role.title}</h3>
+                                                                <div className="text-zinc-400 text-sm font-medium mt-1">{role.company}</div>
+                                                            </div>
+                                                            <span className="text-xs font-mono text-zinc-500 bg-zinc-900 px-2 py-1 rounded border border-zinc-800">
+                                                                {role.date}
+                                                            </span>
+                                                        </div>
 
-                                                {/* Structural Badges */}
-                                                <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded text-[10px] font-mono font-medium uppercase tracking-wider border border-zinc-700 text-zinc-400">
-                                                    {role.category}
-                                                </span>
+                                                        <p className="text-zinc-400 text-sm leading-relaxed mb-4 max-w-xl">
+                                                            {role.description}
+                                                        </p>
+
+                                                        {/* Structural Badges */}
+                                                        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded text-[10px] font-mono font-medium uppercase tracking-wider border border-zinc-700 text-zinc-400">
+                                                            {role.category}
+                                                        </span>
+                                                    </div>
+                                                </motion.div>
+                                            ))}
+                                        </div>
+                                    </div>
+
+                                    {/* Leadership & Other Experience */}
+                                    <div className="mt-8 pt-8 border-t border-white/5">
+                                        <h4 className="text-xl font-bold text-white mb-6 flex items-center gap-3">
+                                            <div className="bg-zinc-800/50 p-2 rounded-lg border border-white/5 shadow-sm text-accent -ml-3">
+                                                <UsersIcon className="size-5" />
                                             </div>
-                                        </motion.div>
-                                    ))}
+                                            Leadership & Other Experience
+                                        </h4>
+                                        <div className="flex flex-col gap-8">
+                                            {experience.filter(role => role.type === "Leadership").map((role, index) => (
+                                                <motion.div
+                                                    key={role.title}
+                                                    initial={{ opacity: 0, y: 20 }}
+                                                    whileInView={{ opacity: 1, y: 0 }}
+                                                    transition={{ delay: 0.2 + index * 0.1 }}
+                                                    className="flex gap-6"
+                                                >
+                                                    {/* Structural Timeline */}
+                                                    <div className="flex flex-col items-center">
+                                                        <div className="size-3 rounded-full bg-zinc-700 border border-zinc-500" />
+                                                        <div className="w-px flex-1 bg-zinc-800 my-2" />
+                                                    </div>
+
+                                                    {/* Content */}
+                                                    <div className="pb-8 flex-1">
+                                                        <div className="flex flex-wrap justify-between items-start gap-4 mb-2">
+                                                            <div>
+                                                                <h3 className="text-lg font-bold text-white leading-tight">{role.title}</h3>
+                                                                <div className="text-zinc-400 text-sm font-medium mt-1">{role.company}</div>
+                                                            </div>
+                                                            <span className="text-xs font-mono text-zinc-500 bg-zinc-900 px-2 py-1 rounded border border-zinc-800">
+                                                                {role.date}
+                                                            </span>
+                                                        </div>
+
+                                                        <p className="text-zinc-400 text-sm leading-relaxed mb-4 max-w-xl">
+                                                            {role.description}
+                                                        </p>
+
+                                                        {/* Structural Badges */}
+                                                        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded text-[10px] font-mono font-medium uppercase tracking-wider border border-zinc-700 text-zinc-400">
+                                                            {role.category}
+                                                        </span>
+                                                    </div>
+                                                </motion.div>
+                                            ))}
+                                        </div>
+                                    </div>
                                 </div>
                             </Card>
 
